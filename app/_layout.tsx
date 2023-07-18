@@ -1,18 +1,18 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import NavigationHeader from "@/components/general/navigation/Header";
+import Colors from "@/constants/Colors";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { SplashScreen, Stack } from "expo-router";
+import { useEffect } from "react";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router';
+} from "expo-router";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: "(tabs)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -20,8 +20,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
+    IcoMoon: require("@/assets/icomoon/icomoon.ttf"),
+    font300: require("@/assets/fonts/Cairo-Light.ttf"),
+    font400: require("@/assets/fonts/Cairo-Regular.ttf"),
+    font500: require("@/assets/fonts/Cairo-Medium.ttf"),
+    font700: require("@/assets/fonts/Cairo-Bold.ttf"),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -43,13 +46,26 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = Colors.light;
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+    <ThemeProvider value={navTheme}>
+      <Stack
+        screenOptions={(props) => ({
+          header: ({ route }) => (
+            // @ts-ignore
+            <NavigationHeader title={route.params?.title} />
+          ),
+        })}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen
+          name="modal"
+          options={{ presentation: "modal" }}
+          initialParams={{ title: "hi" }}
+        />
+        <Stack.Screen name="product-details" initialParams={{ title: "hi" }} />
       </Stack>
     </ThemeProvider>
   );
