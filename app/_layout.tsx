@@ -4,6 +4,7 @@ import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import '@/i18n';
 
 export {
   // Catch any errors thrown by the Layout component.

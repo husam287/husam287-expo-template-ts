@@ -1,14 +1,34 @@
-import { StyleSheet, Text, View } from "react-native";
-
-import EditScreenInfo from "@/components/EditScreenInfo";
+import { StyleSheet } from "react-native";
+import Button from "@/components/general/Button";
+import ScreenWrapper from "@/components/general/ScreenWrapper";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import Text from "@/components/general/Text";
 
 export default function ProfileScreen() {
+  const onChangeLanguage = (targetLang: string) => {
+    i18n.changeLanguage(targetLang)
+  }
+
+  const { t } = useTranslation()
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Profile Screen</Text>
-      <View style={styles.separator} />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
-    </View>
+    <ScreenWrapper>
+      <Text>
+        {t('PROFILE')}
+      </Text>
+      {i18n.language === 'en' ?
+        <Button
+          title="عربي"
+          onPress={() => { onChangeLanguage('ar') }}
+        />
+        :
+        <Button
+          title="English"
+          onPress={() => { onChangeLanguage('en') }}
+        />
+      }
+    </ScreenWrapper>
   );
 }
 
