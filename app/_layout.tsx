@@ -4,7 +4,10 @@ import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import { Provider } from 'react-redux';
 import '@/i18n';
+import useCheckNewUpdates from "@/hooks/useCheckNewUpdate";
+import store from "@/redux";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -20,6 +23,8 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  useCheckNewUpdates();
+
   const [loaded, error] = useFonts({
     IcoMoon: require("@/assets/icomoon/icomoon.ttf"),
     font300: require("@/assets/fonts/Cairo-Light.ttf"),
@@ -52,22 +57,24 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={navTheme}>
-      <Stack
-        screenOptions={(props) => ({
-          header: ({ route }) => (
-            // @ts-ignore
-            <NavigationHeader title={route.params?.title} />
-          ),
-        })}
-      >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="modal"
-          options={{ presentation: "modal" }}
-          initialParams={{ title: "hi" }}
-        />
-        <Stack.Screen name="product-details" initialParams={{ title: "hi" }} />
-      </Stack>
+      <Provider store={store}>
+        <Stack
+          screenOptions={(props) => ({
+            header: ({ route }) => (
+              // @ts-ignore
+              <NavigationHeader title={route.params?.title} />
+            ),
+          })}
+        >
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="modal"
+            options={{ presentation: "modal" }}
+            initialParams={{ title: "hi" }}
+          />
+          <Stack.Screen name="product-details" initialParams={{ title: "hi" }} />
+        </Stack>
+      </Provider>
     </ThemeProvider>
   );
 }

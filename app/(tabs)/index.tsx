@@ -1,6 +1,4 @@
 import { StyleSheet, View } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Link } from 'expo-router';
 import Text from '@/components/general/Text';
 import Button from '@/components/general/Button';
@@ -10,7 +8,6 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>تاب الاولى</Text>
       <View style={styles.separator} />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
       <Link href='/product-details'>
         <Text i18nKey='HOME' />
       </Link>
