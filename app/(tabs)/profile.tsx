@@ -4,6 +4,8 @@ import ScreenWrapper from "@/components/general/ScreenWrapper";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import Text from "@/components/general/Text";
+import FacebookRegisterationButton from "@/components/auth-components/FacebookRegisterationButton";
+import GoogleRegisterationButton from "@/components/auth-components/GoogleRegisterationButton";
 
 export default function ProfileScreen() {
   const onChangeLanguage = (targetLang: string) => {
@@ -28,6 +30,9 @@ export default function ProfileScreen() {
           onPress={() => { onChangeLanguage('en') }}
         />
       }
+
+      <FacebookRegisterationButton/>
+      <GoogleRegisterationButton/>
     </ScreenWrapper>
   );
 }

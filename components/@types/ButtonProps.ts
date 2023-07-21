@@ -13,7 +13,7 @@ export interface ButtonProps {
   textCustomStyle?: TextStyle;
   fontSize?: number;
   iconSize?: number;
-  IconComponent?: JSX.Element;
+  prefix?: JSX.Element;
   IconName?: string;
   isLoading?: boolean;
   suffix?: JSX.Element;

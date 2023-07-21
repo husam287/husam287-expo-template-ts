@@ -27,6 +27,7 @@ function Img({
       <Image
         onLoadStart={() => { setIsLoading(true); }}
         onLoadEnd={() => { setIsLoading(false); }}
+        style={style}
         {...otherProps}
       />
       {isLoading && (

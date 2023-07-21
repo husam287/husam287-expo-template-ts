@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     ...GLOBAL_STYLES.font700,
   },
+  prefixSpacing: {
+    marginEnd: 10
+  },
+  suffixSpacing: {
+    marginStart: 10
+  }
 });
 
 export default function Button({
@@ -46,7 +52,7 @@ export default function Button({
   textCustomStyle,
   fontSize = 16,
   iconSize = 18,
-  IconComponent,
+  prefix,
   IconName,
   isLoading,
   suffix,
@@ -78,7 +84,11 @@ export default function Button({
     >
       {!isLoading ? (
         <View style={GLOBAL_STYLES.row}>
-          {IconComponent}
+          {prefix &&
+            <View style={styles.prefixSpacing}>
+              {prefix}
+            </View>
+          }
 
           {!!IconName && (
             <Icon
@@ -98,7 +108,11 @@ export default function Button({
             </Text>
           )}
 
-          {suffix}
+          {suffix &&
+            <View style={styles.suffixSpacing}>
+              {suffix}
+            </View>
+          }
         </View>
       ) : (
         <ActivityIndicator color={color} size={24} />

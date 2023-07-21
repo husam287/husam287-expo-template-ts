@@ -9,6 +9,7 @@ export const authApi = api.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
+    
     login: build.mutation<AuthTokenResponse, LoginBody>({
       query: (body) => ({
         url: "/auth/login/",
@@ -17,6 +18,7 @@ export const authApi = api.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+
     signup: build.mutation<AuthTokenResponse, SignupBody>({
       query: (body) => ({
         url: "/store-users/me/",
@@ -24,11 +26,39 @@ export const authApi = api.injectEndpoints({
         body: body,
       }),
     }),
+
     logout: build.mutation({
       query: () => ({
         url: "/auth/logout/",
         method: "POST",
       }),
+    }),
+
+    facebookLogin: build.mutation({
+      query: (body) => ({
+        url: "/users/facebook/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    googleLogin: build.mutation({
+      query: (body) => ({
+        url: "/users/gmail/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    appleLogin: build.mutation({
+      query: (body) => ({
+        url: "/users/apple/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
@@ -38,4 +68,7 @@ export const {
   useLoginMutation,
   useSignupMutation,
   useLogoutMutation,
+  useFacebookLoginMutation,
+  useGoogleLoginMutation,
+  useAppleLoginMutation,
 } = authApi;

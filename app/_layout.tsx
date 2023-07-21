@@ -8,6 +8,13 @@ import { Provider } from 'react-redux';
 import '@/i18n';
 import useCheckNewUpdates from "@/hooks/useCheckNewUpdate";
 import store from "@/redux";
+import IcoMoon from "@/assets/icomoon/icomoon.ttf";
+import font300 from "@/assets/fonts/Cairo-Light.ttf";
+import font400 from "@/assets/fonts/Cairo-Regular.ttf";
+import font500 from "@/assets/fonts/Cairo-Medium.ttf";
+import font700 from "@/assets/fonts/Cairo-Bold.ttf";
+import SnackbarComponent from "@/components/general/SnackbarComponent";
+import ReactNativeModal from "react-native-modal";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -26,11 +33,11 @@ export default function RootLayout() {
   useCheckNewUpdates();
 
   const [loaded, error] = useFonts({
-    IcoMoon: require("@/assets/icomoon/icomoon.ttf"),
-    font300: require("@/assets/fonts/Cairo-Light.ttf"),
-    font400: require("@/assets/fonts/Cairo-Regular.ttf"),
-    font500: require("@/assets/fonts/Cairo-Medium.ttf"),
-    font700: require("@/assets/fonts/Cairo-Bold.ttf"),
+    IcoMoon,
+    font300,
+    font400,
+    font500,
+    font700,
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -74,6 +81,12 @@ function RootLayoutNav() {
           />
           <Stack.Screen name="product-details" initialParams={{ title: "hi" }} />
         </Stack>
+
+        {/* GENERAL MODALS */}
+        <SnackbarComponent />
+        <ReactNativeModal>
+          <SnackbarComponent />
+        </ReactNativeModal>
       </Provider>
     </ThemeProvider>
   );
