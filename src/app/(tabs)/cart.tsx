@@ -1,6 +1,7 @@
 import { StyleSheet, Text } from "react-native";
 import ScreenWrapper from "@/components/general/ScreenWrapper";
 import DebouncedSearchField from "@/components/general/inputs/DebouncedSearchField";
+import DateTimeSelection from "@/components/general/inputs/DateTimeSelection";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +20,8 @@ export default function CartScreen() {
     <ScreenWrapper>
       <Text style={styles.title}>Tab Two</Text>
       <DebouncedSearchField onSearchChange={(e) => console.log(e)} />
+
+      <DateTimeSelection />
     </ScreenWrapper>
   );
 }
