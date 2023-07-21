@@ -5,11 +5,13 @@
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:react-native/all"
   ],
   "plugins": [
     "@typescript-eslint",
     "react",
+    "react-native",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",

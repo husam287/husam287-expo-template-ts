@@ -27,18 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     ...GLOBAL_STYLES.font500,
   },
-  logoImage: {
-    height: 50,
-  },
-  saveText: {
-    color: Colors.success,
-    marginBottom: -20,
-    marginEnd: -20,
-    marginTop: -20,
-    padding: 20,
-    ...GLOBAL_STYLES.font700,
-    textDecorationLine: "underline",
-  },
   spaceBetween: {
     justifyContent: "space-between",
   },

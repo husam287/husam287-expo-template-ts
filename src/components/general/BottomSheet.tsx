@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
   },
   spaceTop: { marginTop: 10 },
   spacing: {
-    paddingTop: 20,
-    paddingStart: 20,
     marginStart: -20,
     marginTop: -20,
+    paddingStart: 20,
+    paddingTop: 20,
   },
 });
 

@@ -5,7 +5,6 @@ import { ResponseType } from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import { router } from "expo-router";
 import FB_ICON from "@/assets/images/fb-icon.png";
-import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import COLORS from "@/constants/Colors";
 import Button from "@/components/general/Button";
 import Img from "@/components/general/Image";
@@ -18,18 +17,6 @@ const styles = StyleSheet.create({
     borderRadius: 30 / 2,
     height: 30,
     width: 30,
-  },
-  optionContainer: {
-    ...GLOBAL_STYLES.row,
-    borderBottomColor: COLORS.grey,
-    borderBottomWidth: 1,
-    paddingVertical: 14,
-  },
-  optionText: {
-    color: COLORS.dark,
-    fontSize: 14,
-    marginStart: 10,
-    ...GLOBAL_STYLES.font700,
   },
 });
 

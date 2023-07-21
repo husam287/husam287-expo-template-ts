@@ -22,18 +22,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 15,
   },
+  prefixSpacing: {
+    marginEnd: 10,
+  },
   smallSpaceEnd: { marginEnd: 4 },
+  suffixSpacing: {
+    marginStart: 10,
+  },
   text: {
     color: COLORS.light,
     fontSize: 16,
     textAlign: "center",
     ...GLOBAL_STYLES.font700,
-  },
-  prefixSpacing: {
-    marginEnd: 10,
-  },
-  suffixSpacing: {
-    marginStart: 10,
   },
 });
 
