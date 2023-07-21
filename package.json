@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "./node_modules/eslint/bin/eslint.js --fix ./**/*.{ts,tsx}",
+    "lint": "./node_modules/eslint/bin/eslint.js --fix ./src/**/*.{ts,tsx}",
     "test": "jest --watchAll",
     "eas-build-pre-install": "npm config set legacy-peer-deps true",
     "deploy:test": "eas update --channel testingv1",
@@ -21,7 +21,7 @@
     }
   },
   "lint-staged": {
-    "./**/*.{ts,tsx}": [
+    "./src/**/*.{ts,tsx}": [
       "npm run lint",
       "git add ."
     ]
