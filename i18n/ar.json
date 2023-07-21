@@ -9,5 +9,8 @@
   "PROFILE": "القائمة",
   "SUCCESS": "تم",
   "ERROR": "خطأ",
-  "DEFAULT_PLACEHOLDER": "اكتب هنا"
+  "DEFAULT_PLACEHOLDER": "اكتب هنا",
+  "LOGIN_SUCCESSFULLY": "تم تسجيل الدخول بنجاح",
+  "FACEBOOK": "فيسبوك",
+  "GOOGLE": "جوجل"
 }

@@ -2,22 +2,22 @@ import { StyleSheet } from "react-native";
 import Button from "@/components/general/Button";
 import ScreenWrapper from "@/components/general/ScreenWrapper";
 import i18n from "@/i18n";
-import { useTranslation } from "react-i18next";
 import Text from "@/components/general/Text";
 import FacebookRegisterationButton from "@/components/auth-components/FacebookRegisterationButton";
 import GoogleRegisterationButton from "@/components/auth-components/GoogleRegisterationButton";
+import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
 
 export default function ProfileScreen() {
   const onChangeLanguage = (targetLang: string) => {
     i18n.changeLanguage(targetLang)
   }
 
-  const { t } = useTranslation()
+  const { t } = useAutoCompleteTranslation()
 
   return (
     <ScreenWrapper>
       <Text>
-        {t('PROFILE')}
+        {t("HOME")}
       </Text>
       {i18n.language === 'en' ?
         <Button
@@ -31,8 +31,8 @@ export default function ProfileScreen() {
         />
       }
 
-      <FacebookRegisterationButton/>
-      <GoogleRegisterationButton/>
+      <FacebookRegisterationButton />
+      <GoogleRegisterationButton />
     </ScreenWrapper>
   );
 }

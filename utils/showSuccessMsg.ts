@@ -1,3 +1,4 @@
+import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 import i18n from "@/i18n";
 import Toast from "react-native-toast-message";
 
@@ -5,7 +6,7 @@ export default function showSuccessMsg({
   i18nKey,
   msg,
 }: {
-  i18nKey?: string;
+  i18nKey?: TranslationKeyEnum;
   msg?: string;
 }) {
   Toast.show({

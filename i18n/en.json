@@ -9,5 +9,8 @@
   "PROFILE": "Profile",
   "SUCCESS": "Success",
   "ERROR": "Error",
-  "DEFAULT_PLACEHOLDER": "Write here"
+  "DEFAULT_PLACEHOLDER": "Write here",
+  "LOGIN_SUCCESSFULLY": "Login successfully",
+  "FACEBOOK": "Facebook",
+  "GOOGLE": "Google"
 }

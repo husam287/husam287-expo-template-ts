@@ -3,7 +3,7 @@ import COLORS from '@/constants/Colors';
 import React, { FC } from 'react';
 import { I18nManager, StyleSheet, Text as DefaultText } from 'react-native';
 import { TextProps } from '../@types/TextProps';
-import { useTranslation } from 'react-i18next';
+import useAutoCompleteTranslation from '@/hooks/useAutoCompleteTranslation';
 
 const styles = StyleSheet.create({
   textStyle: {
@@ -20,7 +20,7 @@ export default function Text({
   style,
   ...otherProps
 }: TextProps): JSX.Element {
-  const { t } = useTranslation();
+  const { t } = useAutoCompleteTranslation();
 
   return (
     <DefaultText

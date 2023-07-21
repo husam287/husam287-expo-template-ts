@@ -1,8 +1,9 @@
+import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 import { GestureResponderEvent, TextStyle, ViewStyle } from "react-native";
 
 export interface ButtonProps {
   title?: string;
-  i18nKey?: string;
+  i18nKey?: TranslationKeyEnum;
   onPress: (event: GestureResponderEvent) => void;
   color?: string;
   backgroundColor?: string;

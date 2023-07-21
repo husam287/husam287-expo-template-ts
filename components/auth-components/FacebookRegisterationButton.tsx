@@ -11,7 +11,6 @@ import Img from '@/components/general/Image';
 import { useFacebookLoginMutation } from '@/apis/services/auth';
 import loginHandler from '@/utils/loginHandler';
 import showSuccessMsg from '@/utils/showSuccessMsg';
-import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 
 const styles = StyleSheet.create({
@@ -38,7 +37,6 @@ const FACEBOOK_CLENT_ID = '723166616477711';
 WebBrowser.maybeCompleteAuthSession();
 
 export default function FacebookRegisterationButton() {
-  const { t } = useTranslation()
   const [facebookLogin, { isLoading: isFacebookLoginLoading }] = useFacebookLoginMutation();
 
   const [, response, promptAsync] = Facebook.useAuthRequest({

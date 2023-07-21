@@ -1,9 +1,12 @@
+import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function CategoryScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Link href='/product-details'>
+        <Text style={styles.title}>Tab Two</Text>
+      </Link>
       <View style={styles.separator} />
     </View>
   );

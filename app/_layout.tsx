@@ -15,6 +15,7 @@ import font500 from "@/assets/fonts/Cairo-Medium.ttf";
 import font700 from "@/assets/fonts/Cairo-Bold.ttf";
 import SnackbarComponent from "@/components/general/SnackbarComponent";
 import ReactNativeModal from "react-native-modal";
+import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -59,6 +60,8 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const { t } = useAutoCompleteTranslation()
+
   const navTheme = DefaultTheme;
   navTheme.colors.background = Colors.light;
 
@@ -79,7 +82,7 @@ function RootLayoutNav() {
             options={{ presentation: "modal" }}
             initialParams={{ title: "hi" }}
           />
-          <Stack.Screen name="product-details" initialParams={{ title: "hi" }} />
+          <Stack.Screen name="product-details" initialParams={{ title: t("OFFERS") }} />
         </Stack>
 
         {/* GENERAL MODALS */}
