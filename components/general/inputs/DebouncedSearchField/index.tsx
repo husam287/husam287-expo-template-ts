@@ -43,7 +43,7 @@ export default function DebouncedSearchField({
           color={Colors.dark}
         />
       )}
-      placeholder="ابحث هنا"
+      placeholder="Search here"
       onChangeText={setSearchValue}
       onSubmitEditing={onSubmit}
       value={searchValue}
