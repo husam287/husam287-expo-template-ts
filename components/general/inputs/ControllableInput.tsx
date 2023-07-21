@@ -1,11 +1,11 @@
-import React from 'react';
-import { Controller, Control } from 'react-hook-form';
-import PureInput from './PureInput';
-import { InputFieldProps } from '@/components/@types/InputFieldProps';
+import { Controller, Control } from "react-hook-form";
+import PureInput from "./PureInput";
+import { InputFieldProps } from "@/components/@types/InputFieldProps";
 
 interface ControllableInputProps extends InputFieldProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
-  name: string
+  name: string;
 }
 
 export default function ControllableInput({

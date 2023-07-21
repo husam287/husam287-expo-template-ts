@@ -1,5 +1,4 @@
 import { Text, View, ViewStyle } from "react-native";
-import React from "react";
 
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import COLORS from "@/constants/Colors";

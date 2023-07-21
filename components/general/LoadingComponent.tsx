@@ -1,13 +1,10 @@
-import {
-  ActivityIndicator, StyleSheet, View,
-} from 'react-native';
-import React from 'react';
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
-import Colors from '@/constants/Colors';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
+import Colors from "@/constants/Colors";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
 
 const styles = StyleSheet.create({
-  centering: { justifyContent: 'center' },
+  centering: { justifyContent: "center" },
 });
 
 export default function LoadingComponent() {

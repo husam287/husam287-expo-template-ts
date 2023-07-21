@@ -3,10 +3,10 @@ import DefaultI18n, { LanguageDetectorAsyncModule } from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as Localization from "expo-localization";
 
-import en from "./en.json";
-import ar from "./ar.json";
 import { I18nManager } from "react-native";
 import { reloadAsync } from "expo-updates";
+import en from "./en.json";
+import ar from "./ar.json";
 import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 
 export const locales = {
@@ -32,6 +32,7 @@ const useLanguageStorage: LanguageDetectorAsyncModule = {
   detect: (callback) => {
     AsyncStorage.getItem("lang").then((lang) => {
       if (lang) return callback(lang);
+      return null;
     });
   },
   init: () => null,

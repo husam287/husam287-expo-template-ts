@@ -1,8 +1,11 @@
-import React from 'react';
-import { I18nManager, StyleSheet } from 'react-native';
-import COLORS from '@/constants/Colors';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import Toast, { ErrorToast, SuccessToast, BaseToastProps } from 'react-native-toast-message';
+import { I18nManager, StyleSheet } from "react-native";
+import Toast, {
+  ErrorToast,
+  SuccessToast,
+  BaseToastProps,
+} from "react-native-toast-message";
+import COLORS from "@/constants/Colors";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
 
 const styles = StyleSheet.create({
   errorTextColor: {
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
     ...GLOBAL_STYLES.font500,
     color: COLORS.darkGrey,
     fontSize: 14,
-    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    writingDirection: I18nManager.isRTL ? "rtl" : "ltr",
   },
   successTextColor: {
     color: COLORS.success,
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     ...GLOBAL_STYLES.font700,
     fontSize: 16,
-    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    writingDirection: I18nManager.isRTL ? "rtl" : "ltr",
   },
 });
 
@@ -60,7 +63,5 @@ export default function SnackbarComponent() {
     error: ErrorCustomToast,
   };
 
-  return (
-    <Toast config={toastConfig} />
-  );
+  return <Toast config={toastConfig} />;
 }

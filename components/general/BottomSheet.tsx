@@ -1,13 +1,13 @@
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import React, { useEffect, useRef } from 'react';
-import { AntDesign } from '@expo/vector-icons';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import ActionSheet, { ActionSheetRef } from 'react-native-actions-sheet';
-import { BottomSheetProps } from '../@types/BottomSheetProps';
+import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { useEffect, useRef } from "react";
+import { AntDesign } from "@expo/vector-icons";
+import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import { BottomSheetProps } from "../@types/BottomSheetProps";
 
 const styles = StyleSheet.create({
   sheetContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
     padding: 10,
     paddingHorizontal: 20,
   },
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingStart: 20,
     marginStart: -20,
-    marginTop: -20
-  }
+    marginTop: -20,
+  },
 });
 
 export default function BottomSheet({
@@ -62,9 +62,7 @@ export default function BottomSheet({
           </View>
         )}
 
-        <View style={GLOBAL_STYLES.mainContainer}>
-          {children}
-        </View>
+        <View style={GLOBAL_STYLES.mainContainer}>{children}</View>
       </View>
     </ActionSheet>
   );

@@ -7,7 +7,7 @@ interface SelectionItem {
 
 export interface NormalSelectionModalProps {
   data: SelectionItem[];
-  onChange: Function;
+  onChange: (e: string | number | null | undefined) => void;
   inputValue: string | number;
   InputLabel?: string;
   InputPlaceholder?: string;

@@ -1,25 +1,23 @@
-import {
-  FlatList, TouchableOpacity, View,
-} from 'react-native';
-import React, { useState } from 'react';
-import ReactNativeModal from 'react-native-modal';
-import { SimpleLineIcons, AntDesign } from '@expo/vector-icons';
-import METRICS from '@/constants/Metrics';
-import Text from '@/components/general/Text';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import LoadingComponent from '@/components/general/LoadingComponent';
-import COLORS from '@/constants/Colors';
-import styles from './styles';
-import PureInput from '../PureInput';
-import { NormalSelectionModalProps } from '@/components/@types/NormalSelectionModalProps';
-import i18n from '@/i18n';
+import { FlatList, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import ReactNativeModal from "react-native-modal";
+import { SimpleLineIcons, AntDesign } from "@expo/vector-icons";
+import METRICS from "@/constants/Metrics";
+import Text from "@/components/general/Text";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import LoadingComponent from "@/components/general/LoadingComponent";
+import COLORS from "@/constants/Colors";
+import { NormalSelectionModalProps } from "@/components/@types/NormalSelectionModalProps";
+import i18n from "@/i18n";
+import PureInput from "../PureInput";
+import styles from "./styles";
 
 export default function NormalSelectionModal({
   data,
   onChange,
   inputValue,
   InputLabel,
-  InputPlaceholder = i18n.t('CHOOSE'),
+  InputPlaceholder = i18n.t("CHOOSE"),
   error,
   containerStyle,
   customInputStyle,
@@ -56,14 +54,9 @@ export default function NormalSelectionModal({
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => onSelectItem(item?.value)}
-              style={[
-                GLOBAL_STYLES.row,
-                styles.pressSpace,
-              ]}
+              style={[GLOBAL_STYLES.row, styles.pressSpace]}
             >
-              <Text style={styles.text}>
-                {item.label}
-              </Text>
+              <Text style={styles.text}>{item.label}</Text>
             </TouchableOpacity>
           )}
         />
@@ -71,27 +64,20 @@ export default function NormalSelectionModal({
     </ReactNativeModal>
   );
 
-  const InputIcon = data?.length
-    ? (
-      <SimpleLineIcons
-        name="arrow-down"
-        size={16}
-        color={COLORS.darkGrey}
-      />
-    )
-    : (
-      <AntDesign
-        name="inbox"
-        size={16}
-        color={COLORS.darkGrey}
-      />
-    );
+  const InputIcon = data?.length ? (
+    <SimpleLineIcons name="arrow-down" size={16} color={COLORS.darkGrey} />
+  ) : (
+    <AntDesign name="inbox" size={16} color={COLORS.darkGrey} />
+  );
 
   const selectedItem = data?.find((item) => item.value === inputValue);
-  
+
   return (
     <View>
-      <TouchableOpacity disabled={isLoading || !data?.length} onPress={onShowModal}>
+      <TouchableOpacity
+        disabled={isLoading || !data?.length}
+        onPress={onShowModal}
+      >
         <PureInput
           editable={false}
           labelText={InputLabel}
@@ -104,11 +90,7 @@ export default function NormalSelectionModal({
           customInputStyle={customInputStyle}
           error={error}
           prefix={prefix}
-          suffix={
-            !isLoading
-              ? InputIcon
-              : <LoadingComponent />
-          }
+          suffix={!isLoading ? InputIcon : <LoadingComponent />}
         />
       </TouchableOpacity>
 

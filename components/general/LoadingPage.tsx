@@ -1,7 +1,6 @@
-import { View } from 'react-native';
-import React from 'react';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import LoadingComponent from './LoadingComponent';
+import { View } from "react-native";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import LoadingComponent from "./LoadingComponent";
 
 export default function LoadingPage() {
   return (

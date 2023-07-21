@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -6,18 +5,18 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
 
-import COLORS from '@/constants/Colors';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import METRICS from '@/constants/Metrics';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { ScreenWrapperProps } from '../@types/ScreenWrapperProps';
+import { getStatusBarHeight } from "react-native-status-bar-height";
+import COLORS from "@/constants/Colors";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import METRICS from "@/constants/Metrics";
+import { ScreenWrapperProps } from "../@types/ScreenWrapperProps";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     padding: METRICS.generalSpacingValue,
     paddingTop: 10,
     width: METRICS.screenWidth,
@@ -40,9 +39,9 @@ export default function ScreenWrapper({
   hasNoKeyboardVerticalOffset = false,
 }: ScreenWrapperProps) {
   const extraStyle: ViewStyle = {
-    justifyContent: hasVerticalSpaceBetween ? 'space-between' : 'flex-start',
-    paddingTop: isHeaderHidden ? getStatusBarHeight() : 10
-  }
+    justifyContent: hasVerticalSpaceBetween ? "space-between" : "flex-start",
+    paddingTop: isHeaderHidden ? getStatusBarHeight() : 10,
+  };
 
   const allContainerStyle = [
     styles.container,
@@ -51,25 +50,23 @@ export default function ScreenWrapper({
     customStyle,
   ];
 
-  const MainContentMarkup = (
-    <View style={allContainerStyle}>
-      {children}
-    </View>
-  );
+  const MainContentMarkup = <View style={allContainerStyle}>{children}</View>;
 
   return (
     <SafeAreaView style={styles.innerConatiner}>
-      {Platform.OS === 'ios'
-        ? (
-          <KeyboardAvoidingView
-            style={GLOBAL_STYLES.fullSize}
-            behavior="padding"
-            keyboardVerticalOffset={!hasNoKeyboardVerticalOffset ? METRICS.headerHeight : 0}
-          >
-            {MainContentMarkup}
-          </KeyboardAvoidingView>
-        )
-        : MainContentMarkup}
+      {Platform.OS === "ios" ? (
+        <KeyboardAvoidingView
+          style={GLOBAL_STYLES.fullSize}
+          behavior="padding"
+          keyboardVerticalOffset={
+            !hasNoKeyboardVerticalOffset ? METRICS.headerHeight : 0
+          }
+        >
+          {MainContentMarkup}
+        </KeyboardAvoidingView>
+      ) : (
+        MainContentMarkup
+      )}
     </SafeAreaView>
   );
 }

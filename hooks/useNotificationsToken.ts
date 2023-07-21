@@ -1,7 +1,7 @@
-import * as Notifications from "expo-notifications";
-import * as Device from "expo-device";
 import { Platform } from "react-native";
 import { useState } from "react";
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
 
 async function allowsNotificationsAsync() {
   const settings = await Notifications.getPermissionsAsync();
@@ -41,6 +41,8 @@ export default function useNotificationsToken() {
       const token = (await Notifications.getExpoPushTokenAsync()).data;
       setDeviceToken(token);
     }
+
+    return null;
   })();
 
   return deviceToken;

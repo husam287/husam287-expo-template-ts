@@ -1,6 +1,6 @@
+import { StyleSheet } from "react-native";
 import COLORS from "@/constants/Colors";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
-import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   modalContainer: {

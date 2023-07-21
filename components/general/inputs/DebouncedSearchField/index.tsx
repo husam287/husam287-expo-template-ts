@@ -1,9 +1,9 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import React, { useMemo, useEffect, useState } from 'react';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
-import Colors from '@/constants/Colors';
-import { debounce } from 'lodash-es';
-import PureInput from '../PureInput';
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { useMemo, useEffect, useState } from "react";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { debounce } from "lodash-es";
+import Colors from "@/constants/Colors";
+import PureInput from "../PureInput";
 
 const styles = StyleSheet.create({
   spaceEnd: {
@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
 });
 
 export default function DebouncedSearchField({
-  onSearchChange = (e: string | undefined) => { },
+  onSearchChange = (_e: string | undefined) => {},
   withCloseButton = false,
-  onSubmit = () => { },
+  onSubmit = () => {},
 }) {
   const [searchValue, setSearchValue] = useState<string | undefined>(undefined);
 
@@ -30,28 +30,30 @@ export default function DebouncedSearchField({
   }, [searchValue, debouncedSearchHandler]);
 
   const onDismiss = () => {
-    setSearchValue('');
+    setSearchValue("");
   };
 
   return (
     <PureInput
-      prefix={(
+      prefix={
         <Ionicons
           style={styles.spaceEnd}
           name="search"
           size={24}
           color={Colors.dark}
         />
-      )}
+      }
       placeholder="Search here"
       onChangeText={setSearchValue}
       onSubmitEditing={onSubmit}
       value={searchValue}
-      suffix={(withCloseButton === false && searchValue) ? (
-        <TouchableOpacity onPress={onDismiss}>
-          <AntDesign name="close" size={20} color={Colors.dark} />
-        </TouchableOpacity>
-      ) : null}
+      suffix={
+        withCloseButton === false && searchValue ? (
+          <TouchableOpacity onPress={onDismiss}>
+            <AntDesign name="close" size={20} color={Colors.dark} />
+          </TouchableOpacity>
+        ) : null
+      }
     />
   );
 }

@@ -1,9 +1,10 @@
 import { Tabs } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
+import { ParamListBase, RouteProp } from "@react-navigation/native";
 import NavigationHeader from "@/components/general/navigation/Header";
 import NavigationTab from "@/components/general/navigation/Tab";
 import METRICS from "@/constants/Metrics";
 import COLORS from "@/constants/Colors";
-import { AntDesign } from "@expo/vector-icons";
 import { NavigationTabProps } from "@/components/@types/NavigationTabProps";
 
 const TABWIDTH = METRICS.screenWidth / 5;
@@ -11,7 +12,7 @@ const TABWIDTH = METRICS.screenWidth / 5;
 function HomeTabBarElement({ focused }: Partial<NavigationTabProps>) {
   return (
     <NavigationTab
-      title={"HOME"}
+      title="HOME"
       iconComponent={<AntDesign name="home" size={24} color={COLORS.primary} />}
       focused={Boolean(focused)}
       tabWidth={TABWIDTH}
@@ -22,7 +23,7 @@ function HomeTabBarElement({ focused }: Partial<NavigationTabProps>) {
 function CategoryTabBarElement({ focused }: Partial<NavigationTabProps>) {
   return (
     <NavigationTab
-      title={"CATEGORIES"}
+      title="CATEGORIES"
       iconComponent={<AntDesign name="book" size={24} color={COLORS.primary} />}
       focused={Boolean(focused)}
       tabWidth={TABWIDTH}
@@ -33,7 +34,7 @@ function CategoryTabBarElement({ focused }: Partial<NavigationTabProps>) {
 function OfferTabBarElement({ focused }: Partial<NavigationTabProps>) {
   return (
     <NavigationTab
-      title={"OFFERS"}
+      title="OFFERS"
       iconComponent={
         <AntDesign name="calculator" size={24} color={COLORS.primary} />
       }
@@ -46,7 +47,7 @@ function OfferTabBarElement({ focused }: Partial<NavigationTabProps>) {
 function CartTabBarElement({ focused }: Partial<NavigationTabProps>) {
   return (
     <NavigationTab
-      title={"CART"}
+      title="CART"
       iconComponent={<AntDesign name="car" size={24} color={COLORS.primary} />}
       focused={Boolean(focused)}
       tabWidth={TABWIDTH}
@@ -57,7 +58,7 @@ function CartTabBarElement({ focused }: Partial<NavigationTabProps>) {
 function ProfileTabBarElement({ focused }: Partial<NavigationTabProps>) {
   return (
     <NavigationTab
-      title={"PROFILE"}
+      title="PROFILE"
       iconComponent={<AntDesign name="user" size={24} color={COLORS.primary} />}
       focused={Boolean(focused)}
       tabWidth={TABWIDTH}
@@ -65,17 +66,21 @@ function ProfileTabBarElement({ focused }: Partial<NavigationTabProps>) {
   );
 }
 
+function Header({ route }: { route: RouteProp<ParamListBase> }) {
+  return (
+    <NavigationHeader
+      // @ts-ignore
+      title={route.params?.title}
+      hasBackArrow={false}
+    />
+  );
+}
+
 export default function TabLayout() {
   return (
     <Tabs
-      screenOptions={(props) => ({
-        header: ({ route }) => (
-          <NavigationHeader
-            // @ts-ignore
-            title={route.params?.title}
-            hasBackArrow={false}
-          />
-        ),
+      screenOptions={() => ({
+        header: Header,
         tabBarShowLabel: false,
         tabBarStyle: {
           height: METRICS.bottomTabsHeight,

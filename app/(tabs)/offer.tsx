@@ -1,24 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Controller, useForm } from 'react-hook-form'
-import ControllableInput from '@/components/general/inputs/ControllableInput';
-import Button from '@/components/general/Button';
-import NormalSelectionModal from '@/components/general/inputs/NormalSelectionModal';
-import GENDERS from '@/data/genders';
-import ScreenWrapper from '@/components/general/ScreenWrapper';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import { testSchema } from '@/schemas';
-import useAutoCompleteTranslation from '@/hooks/useAutoCompleteTranslation';
+import { StyleSheet, Text, View } from "react-native";
+import { Controller, useForm } from "react-hook-form";
+import ControllableInput from "@/components/general/inputs/ControllableInput";
+import Button from "@/components/general/Button";
+import NormalSelectionModal from "@/components/general/inputs/NormalSelectionModal";
+import GENDERS from "@/data/genders";
+import ScreenWrapper from "@/components/general/ScreenWrapper";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import { testSchema } from "@/schemas";
+import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
+import { UserInfoBody } from "@/apis/@types/auth";
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    ...GLOBAL_STYLES.font700,
+  },
+});
 
 export default function OfferScreen() {
-  const { t } = useAutoCompleteTranslation()
+  const { t } = useAutoCompleteTranslation();
 
   const { control, handleSubmit } = useForm({
-    resolver: testSchema
-  })
+    resolver: testSchema,
+  });
 
-  const onSubmit = (values: any) => {
-    console.log(values)
-  }
+  const onSubmit = (values: UserInfoBody) => {
+    console.log(values);
+  };
 
   return (
     <ScreenWrapper>
@@ -26,31 +34,31 @@ export default function OfferScreen() {
       <View>
         <ControllableInput
           control={control}
-          name='name'
+          name="name"
           labelText={t("NAME")}
         />
 
         <ControllableInput
           control={control}
-          name='email'
-          labelText={t('EMAIL')}
-          textContentType='password'
+          name="email"
+          labelText={t("EMAIL")}
+          textContentType="password"
         />
 
         <ControllableInput
           control={control}
-          name='bio'
-          labelText={t('BIO')}
+          name="bio"
+          labelText={t("BIO")}
           isTextAreaInput
         />
 
         <Controller
           control={control}
-          name='gender'
+          name="gender"
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <NormalSelectionModal
               inputValue={value}
-              InputLabel={t('GENDER')}
+              InputLabel={t("GENDER")}
               onChange={onChange}
               data={GENDERS}
               error={error?.message}
@@ -58,18 +66,8 @@ export default function OfferScreen() {
           )}
         />
 
-        <Button
-          title='hiii'
-          onPress={handleSubmit(onSubmit)}
-        />
+        <Button title="hiii" onPress={handleSubmit(onSubmit)} />
       </View>
     </ScreenWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    ...GLOBAL_STYLES.font700
-  },
-});

@@ -1,8 +1,5 @@
-import Colors from "@/constants/Colors";
-import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
-import React from "react";
 import {
   I18nManager,
   StyleSheet,
@@ -11,6 +8,8 @@ import {
   View,
 } from "react-native";
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import Colors from "@/constants/Colors";
 
 const styles = StyleSheet.create({
   center: {

@@ -1,15 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function ProductDetailsScreen() {
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>PRODUCT DETAILS</Text>
-      <View style={styles.separator} />
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -26,3 +16,12 @@ const styles = StyleSheet.create({
     width: "80%",
   },
 });
+
+export default function ProductDetailsScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>PRODUCT DETAILS</Text>
+      <View style={styles.separator} />
+    </View>
+  );
+}

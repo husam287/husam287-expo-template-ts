@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { useState } from "react";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import {
   TextInput,
   StyleSheet,
   View,
   TouchableOpacity,
-  Platform,
   I18nManager,
-} from 'react-native';
+} from "react-native";
 
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import COLORS from '@/constants/Colors';
-import Icon from '../Icon';
-import getShadowStyle from '@/utils/getShadowStyle';
-import Text from '../Text';
-import { InputFieldProps } from '@/components/@types/InputFieldProps';
-import i18n from '@/i18n';
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import COLORS from "@/constants/Colors";
+import Icon from "../Icon";
+import getShadowStyle from "@/utils/getShadowStyle";
+import Text from "../Text";
+import { InputFieldProps } from "@/components/@types/InputFieldProps";
+import i18n from "@/i18n";
 
 const styles = StyleSheet.create({
   errorBorder: {
@@ -36,16 +35,16 @@ const styles = StyleSheet.create({
     color: COLORS.dark,
     flex: 1,
     fontSize: 14,
-    textAlign: I18nManager.isRTL ? 'right' : 'left',
-    textAlignVertical: 'center',
-    width: '100%',
+    textAlign: I18nManager.isRTL ? "right" : "left",
+    textAlignVertical: "center",
+    width: "100%",
     ...GLOBAL_STYLES.font500,
   },
   inputContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: COLORS.light,
     borderRadius: 16,
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 56,
     marginTop: 5,
     paddingHorizontal: 15,
@@ -60,13 +59,13 @@ const styles = StyleSheet.create({
   spaceBottom: { marginBottom: 16 },
   spaceEnd10: { marginEnd: 10 },
   textAreaContainer: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     height: 140,
     paddingVertical: 20,
   },
   textAreaInput: {
     marginTop: -7,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
   },
 });
 
@@ -76,7 +75,7 @@ export default function PureInput({
   customContainerStyle,
   prefix,
   suffix = <Icon name="edit" color={COLORS.darkGrey} size={14} />,
-  placeholder = i18n.t('DEFAULT_PLACEHOLDER'),
+  placeholder = i18n.t("DEFAULT_PLACEHOLDER"),
   textContentType,
   placeholderTextColor = `${COLORS.headlineDark}8A`,
   customInputColorWhenDisabled = COLORS.darkGrey,
@@ -108,8 +107,12 @@ export default function PureInput({
     </View>
   );
 
-  const PasswordIconMarkup = textContentType === 'password' && (
-    <TouchableOpacity onPress={() => { setShowPassword(!showPassword) }} >
+  const PasswordIconMarkup = textContentType === "password" && (
+    <TouchableOpacity
+      onPress={() => {
+        setShowPassword(!showPassword);
+      }}
+    >
       <Ionicons
         name={showPassword ? "md-eye-outline" : "md-eye-off-outline"}
         size={24}
@@ -118,7 +121,7 @@ export default function PureInput({
     </TouchableOpacity>
   );
 
-  const pointerEventValue = editable === false ? 'none' : 'auto';
+  const pointerEventValue = editable === false ? "none" : "auto";
 
   const inputContainerStyles = [
     styles.inputContainer,
@@ -137,14 +140,10 @@ export default function PureInput({
 
   const placeholderTextColorValue = placeholderTextColor || COLORS.grey;
 
-  const LabelMarkup = (!!labelText
-    && (
-      <View>
-        <Text style={styles.labelText}>
-          {labelText}
-        </Text>
-      </View>
-    )
+  const LabelMarkup = !!labelText && (
+    <View>
+      <Text style={styles.labelText}>{labelText}</Text>
+    </View>
   );
 
   return (
@@ -152,15 +151,11 @@ export default function PureInput({
       {LabelMarkup}
 
       <View pointerEvents={pointerEventValue} style={inputContainerStyles}>
-        {!!prefix && (
-          <View style={styles.spaceEnd10}>
-            {prefix}
-          </View>
-        )}
+        {!!prefix && <View style={styles.spaceEnd10}>{prefix}</View>}
 
         <TextInput
-          placeholder={`${placeholder}${isPlaceholderDotsHidden ? '' : '...'}`}
-          secureTextEntry={textContentType === 'password' && !showPassword}
+          placeholder={`${placeholder}${isPlaceholderDotsHidden ? "" : "..."}`}
+          secureTextEntry={textContentType === "password" && !showPassword}
           placeholderTextColor={placeholderTextColorValue}
           autoCorrect={false}
           autoCapitalize="none"
@@ -170,10 +165,7 @@ export default function PureInput({
           {...otherProps}
         />
 
-        {textContentType === 'password' ?
-          PasswordIconMarkup
-          : suffix
-        }
+        {textContentType === "password" ? PasswordIconMarkup : suffix}
       </View>
 
       {ErrorSectionMarkup}

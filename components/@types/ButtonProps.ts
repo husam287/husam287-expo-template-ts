@@ -1,5 +1,5 @@
-import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 import { GestureResponderEvent, TextStyle, ViewStyle } from "react-native";
+import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 
 export interface ButtonProps {
   title?: string;

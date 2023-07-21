@@ -9,7 +9,7 @@ export const authApi = api.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
-    
+
     login: build.mutation<AuthTokenResponse, LoginBody>({
       query: (body) => ({
         url: "/auth/login/",
@@ -23,7 +23,7 @@ export const authApi = api.injectEndpoints({
       query: (body) => ({
         url: "/store-users/me/",
         method: "POST",
-        body: body,
+        body,
       }),
     }),
 

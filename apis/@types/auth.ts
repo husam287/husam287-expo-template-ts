@@ -21,3 +21,10 @@ export interface User {
 
 type CombinedBody = Partial<User> & LoginBody;
 export interface SignupBody extends CombinedBody {}
+
+export interface UserInfoBody {
+  name: string;
+  email: string;
+  bio: string;
+  gender: string;
+}

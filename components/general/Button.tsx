@@ -1,42 +1,40 @@
-import React from 'react';
 import {
   ActivityIndicator,
   StyleSheet,
   TouchableOpacity,
   View,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
 
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import COLORS from '@/constants/Colors';
-import Icon from './Icon';
-import getShadowStyle from '@/utils/getShadowStyle';
-import Text from './Text';
-import { ButtonProps } from '../@types/ButtonProps';
-import { useTranslation } from 'react-i18next';
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import COLORS from "@/constants/Colors";
+import getShadowStyle from "@/utils/getShadowStyle";
+import { ButtonProps } from "../@types/ButtonProps";
+import Icon from "./Icon";
+import Text from "./Text";
 
 const styles = StyleSheet.create({
   button: {
-    alignItems: 'center',
+    alignItems: "center",
     borderRadius: 16,
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 40,
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 15,
   },
   smallSpaceEnd: { marginEnd: 4 },
   text: {
     color: COLORS.light,
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
     ...GLOBAL_STYLES.font700,
   },
   prefixSpacing: {
-    marginEnd: 10
+    marginEnd: 10,
   },
   suffixSpacing: {
-    marginStart: 10
-  }
+    marginStart: 10,
+  },
 });
 
 export default function Button({
@@ -69,26 +67,18 @@ export default function Button({
 
   const textExtraStyle = { color, fontSize };
 
-  const hasTitle = (!!title || !!i18nKey)
+  const hasTitle = !!title || !!i18nKey;
 
   return (
     <TouchableOpacity
-      style={[
-        styles.button,
-        customStyle,
-        getShadowStyle(),
-      ]}
+      style={[styles.button, customStyle, getShadowStyle()]}
       disabled={disabled || isLoading}
       activeOpacity={disabled ? 1 : 0.2}
       onPress={onPress}
     >
       {!isLoading ? (
         <View style={GLOBAL_STYLES.row}>
-          {prefix &&
-            <View style={styles.prefixSpacing}>
-              {prefix}
-            </View>
-          }
+          {prefix && <View style={styles.prefixSpacing}>{prefix}</View>}
 
           {!!IconName && (
             <Icon
@@ -108,11 +98,7 @@ export default function Button({
             </Text>
           )}
 
-          {suffix &&
-            <View style={styles.suffixSpacing}>
-              {suffix}
-            </View>
-          }
+          {suffix && <View style={styles.suffixSpacing}>{suffix}</View>}
         </View>
       ) : (
         <ActivityIndicator color={color} size={24} />

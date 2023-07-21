@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
-import React, { useEffect } from 'react';
-import * as Facebook from 'expo-auth-session/providers/facebook';
-import { ResponseType } from 'expo-auth-session';
-import * as WebBrowser from 'expo-web-browser';
-import FB_ICON from '@/assets/images/fb-icon.png';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import COLORS from '@/constants/Colors';
-import Button from '@/components/general/Button';
-import Img from '@/components/general/Image';
-import { useFacebookLoginMutation } from '@/apis/services/auth';
-import loginHandler from '@/utils/loginHandler';
-import showSuccessMsg from '@/utils/showSuccessMsg';
-import { router } from 'expo-router';
+import { StyleSheet } from "react-native";
+import { useEffect } from "react";
+import * as Facebook from "expo-auth-session/providers/facebook";
+import { ResponseType } from "expo-auth-session";
+import * as WebBrowser from "expo-web-browser";
+import { router } from "expo-router";
+import FB_ICON from "@/assets/images/fb-icon.png";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import COLORS from "@/constants/Colors";
+import Button from "@/components/general/Button";
+import Img from "@/components/general/Image";
+import { useFacebookLoginMutation } from "@/apis/services/auth";
+import loginHandler from "@/utils/loginHandler";
+import showSuccessMsg from "@/utils/showSuccessMsg";
 
 const styles = StyleSheet.create({
   icon: {
@@ -33,17 +33,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const FACEBOOK_CLENT_ID = '723166616477711';
+const FACEBOOK_CLENT_ID = "723166616477711";
 WebBrowser.maybeCompleteAuthSession();
 
 export default function FacebookRegisterationButton() {
-  const [facebookLogin, { isLoading: isFacebookLoginLoading }] = useFacebookLoginMutation();
+  const [facebookLogin, { isLoading: isFacebookLoginLoading }] =
+    useFacebookLoginMutation();
 
   const [, response, promptAsync] = Facebook.useAuthRequest({
     expoClientId: FACEBOOK_CLENT_ID,
     clientId: FACEBOOK_CLENT_ID,
     responseType: ResponseType.Token,
-    scopes: ['email'],
+    scopes: ["email"],
   });
 
   const facebookRegister = () => {
@@ -53,30 +54,28 @@ export default function FacebookRegisterationButton() {
   useEffect(() => {
     if (!response) return;
 
-    if (response.type === 'success') {
+    if (response.type === "success") {
       const facebookToken = response.authentication?.accessToken;
       facebookLogin({ access_token: facebookToken })
         .unwrap()
         .then((res) => {
-          loginHandler({ token: res?.access_token, refreshToken: res?.refresh_token });
-          showSuccessMsg({ i18nKey: 'LOGIN_SUCCESSFULLY' });
-          router.push('/(tabs)/offer');
+          loginHandler({
+            token: res?.access_token,
+            refreshToken: res?.refresh_token,
+          });
+          showSuccessMsg({ i18nKey: "LOGIN_SUCCESSFULLY" });
+          router.push("/(tabs)/offer");
         });
     }
-
   }, [response]);
 
   const SocialLogoMarkup = (
-    <Img
-      source={FB_ICON}
-      style={styles.icon}
-      resizeMode="contain"
-    />
+    <Img source={FB_ICON} style={styles.icon} resizeMode="contain" />
   );
 
   return (
     <Button
-      i18nKey='FACEBOOK'
+      i18nKey="FACEBOOK"
       onPress={facebookRegister}
       isLoading={isFacebookLoginLoading}
       borderColor={COLORS.dark}

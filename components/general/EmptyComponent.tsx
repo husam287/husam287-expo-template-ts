@@ -1,14 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
-import Colors from '@/constants/Colors';
-import GLOBAL_STYLES from '@/constants/GlobalStyles';
-import Text from './Text';
+import Colors from "@/constants/Colors";
+import GLOBAL_STYLES from "@/constants/GlobalStyles";
+import Text from "./Text";
+import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 
 const styles = StyleSheet.create({
   centering: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   textStyle: {
     color: Colors.secondary,
@@ -17,7 +17,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function EmptyComponent({ i18nKey = 'EMPTY' }) {
+export default function EmptyComponent({
+  i18nKey = "EMPTY",
+}: {
+  i18nKey: TranslationKeyEnum;
+}) {
   return (
     <View style={[GLOBAL_STYLES.row, styles.centering]}>
       <AntDesign name="inbox" size={18} color={Colors.secondary} />

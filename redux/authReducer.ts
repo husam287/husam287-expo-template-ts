@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "@/apis/@types/auth";
 
 interface IAuthState {
   token?: string | null;
-  userData?: any | null;
+  userData?: User | null;
 }
 const initialState: IAuthState = {
   token: null,
@@ -17,12 +18,12 @@ export const authSlice = createSlice({
       ...state,
       token: action.payload,
     }),
-    setUserInfo: (state, action: PayloadAction<any>) => ({
+    setUserInfo: (state, action: PayloadAction<User>) => ({
       ...state,
       userData: action.payload,
     }),
     logout: () => ({
-      ...initialState
+      ...initialState,
     }),
   },
 });

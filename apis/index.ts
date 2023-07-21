@@ -4,12 +4,12 @@ import {
   retry,
   BaseQueryApi,
   FetchBaseQueryError,
+  FetchArgs,
 } from "@reduxjs/toolkit/query/react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import DomainUrl from "@/apis/Domain";
 import { login, logout } from "@/redux/authReducer";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootState } from "@/redux";
-import logoutHandler from "@/utils/logoutHandler";
 import tagTypes from "./tagTypes";
 import { AuthTokenResponse } from "./@types/auth";
 
@@ -26,7 +26,11 @@ const rawBaseQuery = (baseUrl: string) =>
   });
 
 // Create our baseQuery instance
-const baseQuery = async (args: any, api: BaseQueryApi, extraOptions: any) => {
+const baseQuery = async (
+  args: FetchArgs,
+  api: BaseQueryApi,
+  extraOptions: object,
+) => {
   const lang = await AsyncStorage.getItem("lang");
   const languageText = lang?.includes("ar") ? "ar" : "en";
 
@@ -38,9 +42,9 @@ const baseQuery = async (args: any, api: BaseQueryApi, extraOptions: any) => {
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 0 });
 
 const baseQueryWithReauth = async (
-  args: any,
+  args: FetchArgs,
   api: BaseQueryApi,
-  extraOptions: any
+  extraOptions: object,
 ) => {
   let result = await baseQueryWithRetry(args, api, extraOptions);
 
@@ -54,14 +58,14 @@ const baseQueryWithReauth = async (
         body: { refresh: refreshToken },
       },
       api,
-      extraOptions
+      extraOptions,
     )) as { data: AuthTokenResponse };
 
     return refreshResult;
   };
 
   const saveTheNewAccessTokenAndRetrySameRequest = async (
-    newAccessToken: string
+    newAccessToken: string,
   ) => {
     AsyncStorage.setItem("token", newAccessToken);
     api.dispatch(login(newAccessToken));
@@ -70,7 +74,7 @@ const baseQueryWithReauth = async (
     };
   };
 
-  //@ts-ignore
+  // @ts-ignore
   const isTokenExpire = result?.error?.data?.code?.includes("token_not_valid");
 
   if (isTokenExpire) {
@@ -78,7 +82,7 @@ const baseQueryWithReauth = async (
 
     if (refreshResult.data?.access) {
       await saveTheNewAccessTokenAndRetrySameRequest(
-        refreshResult.data?.access
+        refreshResult.data?.access,
       );
     } else {
       AsyncStorage.removeItem("token");
@@ -113,7 +117,7 @@ const api = createApi({
    * Tag types must be defined in the original API definition
    * for any tags that would be provided by injected endpoints
    */
-  tagTypes: tagTypes,
+  tagTypes,
   /**
    * This api has endpoints injected in adjacent files,
    * which is why no endpoints are shown below.

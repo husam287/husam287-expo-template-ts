@@ -1,6 +1,6 @@
-import { ReactNode, useEffect, useRef } from 'react';
-import * as Notifications from 'expo-notifications';
-import useNotificationsToken from '@/hooks/useNotificationsToken';
+import { ReactNode, useEffect, useRef } from "react";
+import * as Notifications from "expo-notifications";
+import useNotificationsToken from "@/hooks/useNotificationsToken";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -10,7 +10,11 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export default function NotificationListnerContainer({ children }: { children: ReactNode }) {
+export default function NotificationListnerContainer({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const notificationListener = useRef<Notifications.Subscription>();
   const responseListener = useRef<Notifications.Subscription>();
 
@@ -19,27 +23,31 @@ export default function NotificationListnerContainer({ children }: { children: R
   useEffect(() => {
     if (!deviceToken) return;
     // eslint-disable-next-line no-console
-    console.log('DEVICE TOKEN =>', deviceToken);
+    console.log("DEVICE TOKEN =>", deviceToken);
   }, [deviceToken]);
 
   // LISTNERS FOR NOTIFICATIONS
   useEffect(() => {
     // Getting notification
-    notificationListener.current = Notifications.addNotificationReceivedListener(() => {
-      // nothing here
-    });
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener(() => {
+        // nothing here
+      });
 
     // Opening notification
-    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-      // eslint-disable-next-line no-console
-      console.log('OPENED NOTIFICATION => ', response);
-    });
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        // eslint-disable-next-line no-console
+        console.log("OPENED NOTIFICATION => ", response);
+      });
 
     return () => {
-      if (!notificationListener.current) return
-      if (!responseListener.current) return
+      if (!notificationListener.current) return;
+      if (!responseListener.current) return;
 
-      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(
+        notificationListener.current,
+      );
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
@@ -50,8 +58,11 @@ export default function NotificationListnerContainer({ children }: { children: R
     if (!lastNotificationResponse) return;
 
     // eslint-disable-next-line no-console
-    console.log('NOTIFICATION CLICKED WHILE CLOSING APP => ', lastNotificationResponse);
+    console.log(
+      "NOTIFICATION CLICKED WHILE CLOSING APP => ",
+      lastNotificationResponse,
+    );
   }, [lastNotificationResponse]);
 
-  return (children);
+  return children;
 }
