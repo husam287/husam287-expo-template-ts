@@ -1,15 +1,17 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import Animated, { SlideInDown } from "react-native-reanimated";
+import ScreenWrapper from "@/components/general/ScreenWrapper";
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
@@ -20,11 +22,12 @@ const styles = StyleSheet.create({
 
 export default function CategoryScreen() {
   return (
-    <View style={styles.container}>
-      <Link href="/product-details">
-        <Text style={styles.title}>Tab Two</Text>
-      </Link>
-      <View style={styles.separator} />
-    </View>
+    <ScreenWrapper>
+      <Animated.View entering={SlideInDown}>
+        <Link href="/product-details">
+          <Text style={styles.title}>Tab Two</Text>
+        </Link>
+      </Animated.View>
+    </ScreenWrapper>
   );
 }
