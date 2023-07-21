@@ -7,7 +7,24 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll"
+    "lint": "./node_modules/eslint/bin/eslint.js --fix ./**/*.{ts,tsx}",
+    "test": "jest --watchAll",
+    "eas-build-pre-install": "npm config set legacy-peer-deps true",
+    "deploy:test": "eas update --channel testingv1",
+    "deploy:live": "eas update --channel prodv1",
+    "build:test": "eas build --profile preview",
+    "build:live": "eas build --profile production"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx}": [
+      "npm run lint",
+      "git add ."
+    ]
   },
   "jest": {
     "preset": "jest-expo"
@@ -65,7 +82,9 @@
     "jest-expo": "~49.0.0",
     "prettier": "^3.0.0",
     "react-test-renderer": "18.2.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.3",
+    "husky": "^4.3.8",
+    "lint-staged": "^13.0.3"
   },
   "overrides": {
     "react-refresh": "~0.14.0"

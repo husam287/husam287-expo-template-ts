@@ -46,6 +46,7 @@
       "warn"
     ],
     "react/jsx-props-no-spreading": 0,
+    "linebreak-style": 0,
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

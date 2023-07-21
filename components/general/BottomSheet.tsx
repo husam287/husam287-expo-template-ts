@@ -62,7 +62,7 @@ export default function BottomSheet({
           </View>
         )}
 
-        <View style={GLOBAL_STYLES.mainContainer}>{children}</View>
+                       <View style={GLOBAL_STYLES.mainContainer}>{children}</View>
       </View>
     </ActionSheet>
   );
