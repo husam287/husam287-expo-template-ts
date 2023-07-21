@@ -4,7 +4,7 @@ import IcooMoonSelectionFile from "@/assets/icomoon/selection.json";
 const Icon = createIconSetFromIcoMoon(
   IcooMoonSelectionFile,
   "IcoMoon",
-  "icomoon.ttf",
+  "icomoon.ttf"
 );
 
 export default Icon;

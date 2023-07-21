@@ -46,7 +46,7 @@ export default function NotificationListnerContainer({
       if (!responseListener.current) return;
 
       Notifications.removeNotificationSubscription(
-        notificationListener.current,
+        notificationListener.current
       );
       Notifications.removeNotificationSubscription(responseListener.current);
     };
@@ -60,7 +60,7 @@ export default function NotificationListnerContainer({
     // eslint-disable-next-line no-console
     console.log(
       "NOTIFICATION CLICKED WHILE CLOSING APP => ",
-      lastNotificationResponse,
+      lastNotificationResponse
     );
   }, [lastNotificationResponse]);
 

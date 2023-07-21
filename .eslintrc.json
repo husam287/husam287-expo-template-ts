@@ -33,7 +33,13 @@
       }
     ],
     "prettier/prettier": [
-      "error"
+      "error",
+      {
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": false
+      }
     ],
     "@typescript-eslint/no-use-before-define": [
       "error"

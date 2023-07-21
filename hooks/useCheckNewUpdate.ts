@@ -17,7 +17,7 @@ export default function useCheckNewUpdates() {
                 text: "Restart App",
                 onPress: () => Updates.reloadAsync(),
               },
-            ],
+            ]
           );
         }
       } catch (e) {

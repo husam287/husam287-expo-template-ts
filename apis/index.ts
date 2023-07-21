@@ -29,7 +29,7 @@ const rawBaseQuery = (baseUrl: string) =>
 const baseQuery = async (
   args: FetchArgs,
   api: BaseQueryApi,
-  extraOptions: object,
+  extraOptions: object
 ) => {
   const lang = await AsyncStorage.getItem("lang");
   const languageText = lang?.includes("ar") ? "ar" : "en";
@@ -44,7 +44,7 @@ const baseQueryWithRetry = retry(baseQuery, { maxRetries: 0 });
 const baseQueryWithReauth = async (
   args: FetchArgs,
   api: BaseQueryApi,
-  extraOptions: object,
+  extraOptions: object
 ) => {
   let result = await baseQueryWithRetry(args, api, extraOptions);
 
@@ -58,14 +58,14 @@ const baseQueryWithReauth = async (
         body: { refresh: refreshToken },
       },
       api,
-      extraOptions,
+      extraOptions
     )) as { data: AuthTokenResponse };
 
     return refreshResult;
   };
 
   const saveTheNewAccessTokenAndRetrySameRequest = async (
-    newAccessToken: string,
+    newAccessToken: string
   ) => {
     AsyncStorage.setItem("token", newAccessToken);
     api.dispatch(login(newAccessToken));
@@ -82,7 +82,7 @@ const baseQueryWithReauth = async (
 
     if (refreshResult.data?.access) {
       await saveTheNewAccessTokenAndRetrySameRequest(
-        refreshResult.data?.access,
+        refreshResult.data?.access
       );
     } else {
       AsyncStorage.removeItem("token");

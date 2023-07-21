@@ -20,7 +20,7 @@ export default function DebouncedSearchField({
 
   const debouncedSearchHandler = useMemo(
     () => debounce(onSearchChange, 300),
-    [],
+    []
   );
 
   useEffect(() => {
