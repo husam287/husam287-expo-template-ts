@@ -1,7 +1,6 @@
 import { Platform } from "react-native";
 import { useState } from "react";
 import * as Notifications from "expo-notifications";
-import * as Device from "expo-device";
 
 async function allowsNotificationsAsync() {
   const settings = await Notifications.getPermissionsAsync();
@@ -23,24 +22,22 @@ export default function useNotificationsToken() {
   const [deviceToken, setDeviceToken] = useState<string | null>(null);
 
   (async () => {
-    if (Device.isDevice) {
-      if (Platform.OS === "android") {
-        Notifications.setNotificationChannelAsync("default", {
-          name: "default",
-          importance: Notifications.AndroidImportance.MAX,
-          vibrationPattern: [0, 250, 250, 250],
-          lightColor: "#FF231F7C",
-        });
-      }
-
-      const isAllowed = await allowsNotificationsAsync();
-      if (!isAllowed) {
-        // alert('Failed to get push token for push notification!');
-        return null;
-      }
-      const token = (await Notifications.getExpoPushTokenAsync()).data;
-      setDeviceToken(token);
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
     }
+
+    const isAllowed = await allowsNotificationsAsync();
+    if (!isAllowed) {
+      // alert('Failed to get push token for push notification!');
+      return null;
+    }
+    const token = (await Notifications.getExpoPushTokenAsync()).data;
+    setDeviceToken(token);
 
     return null;
   })();

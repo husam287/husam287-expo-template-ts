@@ -1,6 +1,8 @@
 import { ReactNode, useEffect, useRef } from "react";
 import * as Notifications from "expo-notifications";
 import useNotificationsToken from "@/hooks/useNotificationsToken";
+import handleNotificationRedirection from "@/utils/handleNotificationRedirection";
+import { NotificationData } from "@/apis/@types/notification";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -15,8 +17,8 @@ export default function NotificationListnerContainer({
 }: {
   children: ReactNode;
 }) {
-  const notificationListener = useRef<Notifications.Subscription>();
-  const responseListener = useRef<Notifications.Subscription>();
+  const notificationListener = useRef<Notifications.Subscription | undefined>();
+  const responseListener = useRef<Notifications.Subscription | undefined>();
 
   // GETTING NOTIFICATION DEVICE TOKEN
   const deviceToken = useNotificationsToken();
@@ -37,18 +39,22 @@ export default function NotificationListnerContainer({
     // Opening notification
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
-        // eslint-disable-next-line no-console
-        console.log("OPENED NOTIFICATION => ", response);
+        const notificationData = response?.notification.request.content
+          .data as NotificationData;
+
+        handleNotificationRedirection(notificationData);
       });
 
     return () => {
-      if (!notificationListener.current) return;
-      if (!responseListener.current) return;
+      if (notificationListener?.current) {
+        Notifications.removeNotificationSubscription(
+          notificationListener.current
+        );
+      }
 
-      Notifications.removeNotificationSubscription(
-        notificationListener.current
-      );
-      Notifications.removeNotificationSubscription(responseListener.current);
+      if (responseListener?.current) {
+        Notifications.removeNotificationSubscription(responseListener.current);
+      }
     };
   }, []);
 
@@ -57,11 +63,10 @@ export default function NotificationListnerContainer({
   useEffect(() => {
     if (!lastNotificationResponse) return;
 
-    // eslint-disable-next-line no-console
-    console.log(
-      "NOTIFICATION CLICKED WHILE CLOSING APP => ",
-      lastNotificationResponse
-    );
+    const notificationData = lastNotificationResponse?.notification.request
+      .content.data as NotificationData;
+
+    handleNotificationRedirection(notificationData);
   }, [lastNotificationResponse]);
 
   return children;

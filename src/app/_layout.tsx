@@ -8,7 +8,6 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
-import ReactNativeModal from "react-native-modal";
 import NavigationHeader from "@/components/general/navigation/Header";
 import Colors from "@/constants/Colors";
 import "@/i18n";
@@ -19,8 +18,9 @@ import font300 from "@/assets/fonts/Cairo-Light.ttf";
 import font400 from "@/assets/fonts/Cairo-Regular.ttf";
 import font500 from "@/assets/fonts/Cairo-Medium.ttf";
 import font700 from "@/assets/fonts/Cairo-Bold.ttf";
-import SnackbarComponent from "@/components/general/SnackbarComponent";
 import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
+import NotificationListnerContainer from "@/components/containers/NotificationListnerContainer";
+import MainContainer from "@/components/containers/MainContainer";
 
 function Header({ route }: { route: RouteProp<ParamListBase> }) {
   return (
@@ -40,37 +40,32 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={navTheme}>
       <Provider store={store}>
-        <Stack
-          screenOptions={() => ({
-            header: Header,
-          })}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="modal"
-            options={{ presentation: "modal" }}
-            initialParams={{ title: "hi" }}
-          />
-          <Stack.Screen
-            name="product-details"
-            initialParams={{ title: t("OFFERS") }}
-          />
-        </Stack>
-
-        {/* GENERAL MODALS */}
-        <SnackbarComponent />
-        <ReactNativeModal>
-          <SnackbarComponent />
-        </ReactNativeModal>
+        <NotificationListnerContainer>
+          <MainContainer>
+            <Stack
+              screenOptions={() => ({
+                header: Header,
+              })}
+            >
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="modal"
+                options={{ presentation: "modal" }}
+                initialParams={{ title: "hi" }}
+              />
+              <Stack.Screen
+                name="product-details"
+                initialParams={{ title: t("OFFERS") }}
+              />
+            </Stack>
+          </MainContainer>
+        </NotificationListnerContainer>
       </Provider>
     </ThemeProvider>
   );
 }
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
+export { ErrorBoundary } from "expo-router";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
