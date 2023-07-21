@@ -1,11 +1,11 @@
 # husam287-expo-template-ts
 
-Typescript EXPO SDK 49 Template
+FILE BASE ROUTING EXPO SDK 49 Template (typescript)
 
-> To use this template, make sure to have the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) latest version installed and run:
+> Be sure to have [Node.js LTS release](https://nodejs.org/en) installed (v16+ required, v18+ recommended).
 
 ```bash
-expo init [name] --template @husam287/expo-template-ts
+npx create-expo-app [name] --template @husam287/expo-template-ts
 ```
 
 ## ⚡ Stack and Dependencies
@@ -15,7 +15,7 @@ expo init [name] --template @husam287/expo-template-ts
 - [**RTK Query**](https://redux-toolkit.js.org/rtk-query/overview): a high performance lib for fetching data
 - [**Icomoon**](https://icomoon.io/): To use custom icons using icon component and files generated from [Icomoon website](https://icomoon.io/)
 - [**Form Validation:**](https://react-hook-form.com/) We are using [react-hook-form](https://react-hook-form.com/) and [yup](https://www.npmjs.com/package/yup) to validate our user inputs, checking them in our form-input component while passing the yup schema in the screens
-- [**Translations:**](https://www.npmjs.com/package/i18n-js) We are using [react-i18next](https://react.i18next.com/) and [expo-localization](https://docs.expo.dev/versions/latest/sdk/localization/) to translate the app (en - ar).
+- [**Translations:**](https://www.npmjs.com/package/i18n-js) We are using [react-i18next](https://react.i18next.com/) and [expo-localization](https://docs.expo.dev/versions/latest/sdk/localization/) to translate the app (en - ar) - i.e use (useAutoCompleteTranslation) hook to enjoy autocompleted i18n keys.
 - [**EAS and live update configuration:**](https://docs.expo.dev/build/introduction/) EAS and expo publish configurations are ready to use (production and testing channels).
 - [**Eslint with airbnb config:**](https://www.npmjs.com/package/eslint-config-airbnb) To keep your code more clean and improve its quality
 - [**Husky:**](https://github.com/typicode/husky) To make pre-commit hooks
@@ -23,13 +23,12 @@ expo init [name] --template @husam287/expo-template-ts
 - **Absolute Imports:** To avoid annoying relative.
 - **App Name Localization:** Now you can localize the app name with the key of "CFBundleDisplayName" for ios and "app_name" for android in i18n files
 
-
 ## 🔧 Usage
 
-> Be sure to have the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) installed.
+> Be sure to have [Node.js LTS release](https://nodejs.org/en) installed (v16+ required, v18+ recommended).
 
 ```bash
-expo init [name] --template @husam287/expo-template-ts
+npx create-expo-app [name] --template @husam287/expo-template-ts
 ```
 
 ### 💻 **Development Practices**
@@ -41,7 +40,7 @@ expo init [name] --template @husam287/expo-template-ts
    _Directories:_ all lower case with - for spaces (ex. home-components)  
    _Files/Components:_ Capital first letter and CamelCase (ex. \<FormInput />)  
    _Variables:_ camelCase (ex. const isLoading)
-   _Constant value:_ all upper case _ for spaces (ex. GLOBAL_STYLES)
+   _Constant value:_ all upper case \_ for spaces (ex. GLOBAL_STYLES)
 
 ## 📂 Organization
 

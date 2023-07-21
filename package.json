@@ -1,9 +1,9 @@
 {
   "name": "@husam287/expo-template-ts",
-  "homepage": "https://github.com/husam287/husam287-expo-template",
+  "homepage": "https://github.com/husam287/husam287-expo-template-ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/husam287/husam287-expo-template.git"
+    "url": "git+https://github.com/husam287/husam287-expo-template-ts.git"
   },
   "publishConfig": {
     "access": "public"
@@ -27,7 +27,7 @@
     "template"
   ],
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
