@@ -12,5 +12,17 @@
   "DEFAULT_PLACEHOLDER": "Write here",
   "LOGIN_SUCCESSFULLY": "Login successfully",
   "FACEBOOK": "Facebook",
-  "GOOGLE": "Google"
+  "GOOGLE": "Google",
+  "CHOOSE": "Choose",
+  "###################### AUTH ######################": "###################### AUTH ######################",
+  "PHONE": "Phone",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
+  "NAME": "Name",
+  "GENDER": "Gender",
+  "BIO": "Bio",
+  "###################### VALIDATIONS ######################": "###################### VALIDATIONS ######################",
+  "REQUIRED": "required",
+  "WRONG_PHONE_FORMATE": "Wrong phone number",
+  "PASSWORD_DONT_MATCH": "Passwords don't match"
 }

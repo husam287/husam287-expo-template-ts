@@ -1,10 +1,10 @@
 import React from 'react';
-import { Controller, Control, FieldValues } from 'react-hook-form';
+import { Controller, Control } from 'react-hook-form';
 import PureInput from './PureInput';
 import { InputFieldProps } from '@/components/@types/InputFieldProps';
 
 interface ControllableInputProps extends InputFieldProps {
-  control: Control<FieldValues>;
+  control: Control<any>;
   name: string
 }
 

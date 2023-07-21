@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "husam287-expo-template-ts",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -16,9 +16,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hossam.template",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "android": {
+      "package": "com.hossam.template",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -29,6 +34,10 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "locales": {
+      "en": "./i18n/en.json",
+      "ar": "./i18n/ar.json"
+    },
     "plugins": [
       "expo-router",
       "expo-localization",
@@ -38,7 +47,8 @@
           "icon": "./assets/images/notification-icon.png",
           "color": "#ffffff"
         }
-      ]
+      ],
+      "@mmomtchev/expo-android-localized-app-name"
     ],
     "experiments": {
       "tsconfigPaths": true,

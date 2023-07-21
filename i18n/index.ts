@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import i18n, { LanguageDetectorAsyncModule } from "i18next";
+import DefaultI18n, { LanguageDetectorAsyncModule } from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as Localization from "expo-localization";
 
@@ -7,6 +7,7 @@ import en from "./en.json";
 import ar from "./ar.json";
 import { I18nManager } from "react-native";
 import { reloadAsync } from "expo-updates";
+import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
 
 export const locales = {
   en: {
@@ -23,7 +24,7 @@ const isEnglish = Localization.locale.includes("en");
 
 const defaultLang = isEnglish ? "en" : "ar";
 
-export const currentLanguage = i18n.language || defaultLang;
+export const currentLanguage = DefaultI18n.language || defaultLang;
 
 const useLanguageStorage: LanguageDetectorAsyncModule = {
   type: "languageDetector",
@@ -51,8 +52,7 @@ const useLanguageStorage: LanguageDetectorAsyncModule = {
   },
 };
 
-i18n
-  .use(useLanguageStorage)
+DefaultI18n.use(useLanguageStorage)
   .use(initReactI18next)
   .init({
     compatibilityJSON: "v3",
@@ -62,5 +62,10 @@ i18n
       useSuspense: false,
     },
   });
+
+const i18n = {
+  ...DefaultI18n,
+  t: (key: TranslationKeyEnum) => DefaultI18n.t(key),
+};
 
 export default i18n;

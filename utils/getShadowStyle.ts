@@ -12,6 +12,5 @@ export default function getShadowStyle({
     },
     shadowRadius: radius,
     elevation: radius * 0.5,
-    margin: 5,
   };
 }

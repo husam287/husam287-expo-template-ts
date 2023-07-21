@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     ...GLOBAL_STYLES.font500,
   },
   inputContainer: {
-    width: '100%',
     alignItems: 'center',
     backgroundColor: COLORS.light,
     borderRadius: 16,
@@ -57,16 +56,18 @@ const styles = StyleSheet.create({
     marginStart: 5,
     ...GLOBAL_STYLES.font500,
   },
-  showPasswordIcon: {
-    elevation: 20,
-    position: 'absolute',
-    right: 20,
-    top: 20,
-    zIndex: 10,
-  },
   spaceAround: { marginHorizontal: 5 },
-  spaceBottom: { marginBottom: 16, width: '100%' },
+  spaceBottom: { marginBottom: 16 },
   spaceEnd10: { marginEnd: 10 },
+  textAreaContainer: {
+    alignItems: 'flex-start',
+    height: 140,
+    paddingVertical: 20,
+  },
+  textAreaInput: {
+    marginTop: -7,
+    textAlignVertical: 'top',
+  },
 });
 
 export default function PureInput({
@@ -87,6 +88,7 @@ export default function PureInput({
   ...otherProps
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false);
+
   const hasErrors = Boolean(error);
 
   const ErrorSectionMarkup = (
@@ -107,30 +109,13 @@ export default function PureInput({
   );
 
   const PasswordIconMarkup = textContentType === 'password' && (
-    <View style={styles.showPasswordIcon}>
-      <TouchableOpacity
-        onPress={() => {
-          setShowPassword(false);
-        }}
-      >
-        {showPassword && (
-          <Ionicons name="md-eye-outline" size={24} color={COLORS.primary} />
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          setShowPassword(true);
-        }}
-      >
-        {!showPassword && (
-          <Ionicons
-            name="md-eye-off-outline"
-            size={24}
-            color={COLORS.primary}
-          />
-        )}
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => { setShowPassword(!showPassword) }} >
+      <Ionicons
+        name={showPassword ? "md-eye-outline" : "md-eye-off-outline"}
+        size={24}
+        color={COLORS.primary}
+      />
+    </TouchableOpacity>
   );
 
   const pointerEventValue = editable === false ? 'none' : 'auto';
@@ -140,24 +125,21 @@ export default function PureInput({
     customContainerStyle,
     getShadowStyle(),
     hasErrors && styles.errorBorder,
+    isTextAreaInput && styles.textAreaContainer,
   ];
 
   const inputStyles = [
     styles.input,
     customInputStyle && { ...customInputStyle },
     !editable && { color: customInputColorWhenDisabled }, // override color when disabled
+    isTextAreaInput && styles.textAreaInput,
   ];
 
   const placeholderTextColorValue = placeholderTextColor || COLORS.grey;
 
   const LabelMarkup = (!!labelText
     && (
-      <View style={GLOBAL_STYLES.row}>
-        <Icon
-          name="next"
-          size={14}
-          color={COLORS.darkGrey}
-        />
+      <View>
         <Text style={styles.labelText}>
           {labelText}
         </Text>
@@ -188,10 +170,10 @@ export default function PureInput({
           {...otherProps}
         />
 
-        {suffix}
-
-        {/* SHOW PASSWORD */}
-        {PasswordIconMarkup}
+        {textContentType === 'password' ?
+          PasswordIconMarkup
+          : suffix
+        }
       </View>
 
       {ErrorSectionMarkup}

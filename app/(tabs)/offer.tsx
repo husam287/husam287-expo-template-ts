@@ -6,8 +6,15 @@ import NormalSelectionModal from '@/components/general/inputs/NormalSelectionMod
 import GENDERS from '@/data/genders';
 import ScreenWrapper from '@/components/general/ScreenWrapper';
 import GLOBAL_STYLES from '@/constants/GlobalStyles';
+import { testSchema } from '@/schemas';
+import useAutoCompleteTranslation from '@/hooks/useAutoCompleteTranslation';
+
 export default function OfferScreen() {
-  const { control, handleSubmit } = useForm({})
+  const { t } = useAutoCompleteTranslation()
+
+  const { control, handleSubmit } = useForm({
+    resolver: testSchema
+  })
 
   const onSubmit = (values: any) => {
     console.log(values)
@@ -20,16 +27,21 @@ export default function OfferScreen() {
         <ControllableInput
           control={control}
           name='name'
+          labelText={t("NAME")}
         />
 
         <ControllableInput
           control={control}
-          name='age'
+          name='email'
+          labelText={t('EMAIL')}
+          textContentType='password'
         />
 
         <ControllableInput
           control={control}
-          name='desc'
+          name='bio'
+          labelText={t('BIO')}
+          isTextAreaInput
         />
 
         <Controller
@@ -38,6 +50,7 @@ export default function OfferScreen() {
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <NormalSelectionModal
               inputValue={value}
+              InputLabel={t('GENDER')}
               onChange={onChange}
               data={GENDERS}
               error={error?.message}
