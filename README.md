@@ -10,7 +10,7 @@ npx create-expo-app [name] --template @husam287/expo-template-ts
 
 ## ⚡ Stack and Dependencies
 
-- [**Expo router**](https://docs.expo.dev/routing/introduction/): For navigating through screens, we are using react navigation's tab and stack navigators with custom header created
+- [**Expo Router**](https://docs.expo.dev/routing/introduction/): For navigating through screens, we are using react navigation's tab and stack navigators with custom header created
 - [**Redux Toolkit**](https://redux-toolkit.js.org/): We use redux toolkit to manage universal state. An introduction into redux toolkit can be found [here](https://www.youtube.com/watch?v=9zySeP5vH9c).
 - [**RTK Query**](https://redux-toolkit.js.org/rtk-query/overview): a high performance lib for fetching data
 - [**Icomoon**](https://icomoon.io/): To use custom icons using icon component and files generated from [Icomoon website](https://icomoon.io/)
