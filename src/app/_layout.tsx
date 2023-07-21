@@ -27,7 +27,6 @@ function Header({ route }: { route: RouteProp<ParamListBase> }) {
     <NavigationHeader
       // @ts-ignore
       title={route.params?.title}
-      hasBackArrow={false}
     />
   );
 }
