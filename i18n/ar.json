@@ -8,5 +8,6 @@
   "CART": "سلة الشراء",
   "PROFILE": "القائمة",
   "SUCCESS": "تم",
-  "ERROR": "خطأ"
+  "ERROR": "خطأ",
+  "DEFAULT_PLACEHOLDER": "اكتب هنا"
 }
