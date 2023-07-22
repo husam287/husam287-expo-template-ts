@@ -1,5 +1,6 @@
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { Image } from "expo-image";
 import LoadingComponent from "./LoadingComponent";
 import { ImgProps } from "../@types/ImgProps";
 
