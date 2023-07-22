@@ -27,10 +27,25 @@ npx create-expo-app [name] --template @husam287/expo-template-ts
 
 > Be sure to have [Node.js LTS release](https://nodejs.org/en) installed (v16+ required, v18+ recommended).
 
+>1) install the template
 ```bash
 npx create-expo-app [name] --template @husam287/expo-template-ts
 ```
 
+>2) install eas-cli globally
+```bash
+npm install -g eas-cli
+```
+
+>3) configure the expo project linkage
+```bash
+eas build:configure
+```
+
+>4) configure eas updates (required before build)
+```bash
+npm run deploy:test
+```
 ### 💻 **Development Practices**
 
 1. **Responsive:** Make sure to utilize responsive color and screen sizes for components in constants folder.
