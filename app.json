@@ -29,11 +29,6 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./src/assets/images/favicon.png"
-    },
     "locales": {
       "en": "./src/i18n/en.json",
       "ar": "./src/i18n/ar.json"
