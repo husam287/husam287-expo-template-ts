@@ -2,12 +2,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import DefaultI18n, { LanguageDetectorAsyncModule } from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as Localization from "expo-localization";
+import "moment/locale/ar";
 
 import { I18nManager } from "react-native";
 import { reloadAsync } from "expo-updates";
+import moment from "moment";
 import en from "./en.json";
 import ar from "./ar.json";
 import { TranslationKeyEnum } from "@/@types/TranslationKeyEnum";
+import momentArabicLocalization from "@/constants/momentArabicLocalization";
 
 export const locales = {
   en: {
@@ -31,7 +34,13 @@ const useLanguageStorage: LanguageDetectorAsyncModule = {
   async: true,
   detect: (callback) => {
     AsyncStorage.getItem("lang").then((lang) => {
-      if (lang) return callback(lang);
+      if (lang) {
+        moment.locale(lang);
+        if (lang === "ar") {
+          moment.updateLocale(lang, momentArabicLocalization);
+        }
+        return callback(lang);
+      }
       return null;
     });
   },

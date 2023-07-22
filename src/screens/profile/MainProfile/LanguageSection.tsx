@@ -9,7 +9,7 @@ export default function LanguageSection() {
 
   return (
     <View>
-      {i18n.language === "en" ? (
+      {i18n.t("lang") === "en" ? (
         <Button
           title="عربي"
           onPress={() => {

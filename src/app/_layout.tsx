@@ -21,6 +21,7 @@ import font700 from "@/assets/fonts/Cairo-Bold.ttf";
 import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
 import NotificationListnerContainer from "@/components/containers/NotificationListnerContainer";
 import MainContainer from "@/components/containers/MainContainer";
+import useCheckingForcedStoreUpdate from "@/hooks/useCheckingForcedStoreUpdate";
 
 function Header({ route }: { route: RouteProp<ParamListBase> }) {
   return (
@@ -77,6 +78,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   useCheckNewUpdates();
+  useCheckingForcedStoreUpdate();
 
   const [loaded, error] = useFonts({
     IcoMoon,
