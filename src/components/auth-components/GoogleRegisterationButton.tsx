@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import * as Google from "expo-auth-session/providers/google";
 
 import * as WebBrowser from "expo-web-browser";
-import { router } from "expo-router";
 import GOOGLE_ICON from "@/assets/images/google-logo.png";
 import COLORS from "@/constants/Colors";
 import Button from "@/components/general/Button";
@@ -55,7 +54,6 @@ export default function GoogleRegisterationButton() {
             refreshToken: res?.refresh_token,
           });
           showSuccessMsg({ i18nKey: "LOGIN_SUCCESSFULLY" });
-          router.push("/(tabs)/offer");
         });
     }
 
@@ -63,7 +61,7 @@ export default function GoogleRegisterationButton() {
   }, [fullResult]);
 
   const SocialLogoMarkup = (
-    <Img source={GOOGLE_ICON} style={styles.icon} resizeMode="contain" />
+    <Img source={GOOGLE_ICON} style={styles.icon} contentFit="contain" />
   );
 
   return (

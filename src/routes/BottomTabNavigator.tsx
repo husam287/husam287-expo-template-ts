@@ -1,11 +1,19 @@
-import { Tabs } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
-import { ParamListBase, RouteProp } from "@react-navigation/native";
-import NavigationHeader from "@/components/general/navigation/Header";
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 import NavigationTab from "@/components/general/navigation/Tab";
 import METRICS from "@/constants/Metrics";
 import COLORS from "@/constants/Colors";
 import { NavigationTabProps } from "@/components/@types/NavigationTabProps";
+import HomeScreen from "@/screens/main/Home";
+import CategoriesScreen from "@/screens/main/Categories";
+import OfferScreen from "@/screens/main/Offers";
+import CartScreen from "@/screens/main/Cart";
+import MainProfileScreen from "@/screens/profile/MainProfile";
+import { TabParamList } from "./types";
+import MainScreenOptions from "./MainScreenOptions";
 
 const TABWIDTH = METRICS.screenWidth / 5;
 
@@ -66,66 +74,57 @@ function ProfileTabBarElement({ focused }: Partial<NavigationTabProps>) {
   );
 }
 
-function Header({ route }: { route: RouteProp<ParamListBase> }) {
-  return (
-    <NavigationHeader
-      // @ts-ignore
-      title={route.params?.title}
-      hasBackArrow={false}
-    />
-  );
-}
+const Tabs = createBottomTabNavigator<TabParamList>();
 
-export default function TabLayout() {
+export default function BottomTabNavigator() {
   return (
-    <Tabs
-      screenOptions={() => ({
-        header: Header,
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          height: METRICS.bottomTabsHeight,
-        },
-      })}
+    <Tabs.Navigator
+      screenOptions={MainScreenOptions as BottomTabNavigationOptions}
     >
       <Tabs.Screen
-        name="index"
+        name="HomeScreen"
         initialParams={{ title: "Home" }}
         options={{
           tabBarIcon: HomeTabBarElement,
         }}
+        component={HomeScreen}
       />
 
       <Tabs.Screen
-        name="category"
+        name="CategoriesScreen"
         initialParams={{ title: "Categories" }}
         options={{
           tabBarIcon: CategoryTabBarElement,
         }}
+        component={CategoriesScreen}
       />
 
       <Tabs.Screen
-        name="offer"
+        name="OfferScreen"
         initialParams={{ title: "Offers" }}
         options={{
           tabBarIcon: OfferTabBarElement,
         }}
+        component={OfferScreen}
       />
 
       <Tabs.Screen
-        name="cart"
+        name="CartScreen"
         initialParams={{ title: "Cart" }}
         options={{
           tabBarIcon: CartTabBarElement,
         }}
+        component={CartScreen}
       />
 
       <Tabs.Screen
-        name="profile"
+        name="MainProfileScreen"
         initialParams={{ title: "Profile" }}
         options={{
           tabBarIcon: ProfileTabBarElement,
         }}
+        component={MainProfileScreen}
       />
-    </Tabs>
+    </Tabs.Navigator>
   );
 }

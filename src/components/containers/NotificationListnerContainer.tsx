@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef } from "react";
 import * as Notifications from "expo-notifications";
+import { useNavigation } from "@react-navigation/native";
 import useNotificationsToken from "@/hooks/useNotificationsToken";
 import handleNotificationRedirection from "@/utils/handleNotificationRedirection";
 import { NotificationData } from "@/apis/@types/notification";
@@ -17,6 +18,8 @@ export default function NotificationListnerContainer({
 }: {
   children: ReactNode;
 }) {
+  const navigation = useNavigation();
+
   const notificationListener = useRef<Notifications.Subscription | undefined>();
   const responseListener = useRef<Notifications.Subscription | undefined>();
 
@@ -42,7 +45,7 @@ export default function NotificationListnerContainer({
         const notificationData = response?.notification.request.content
           .data as NotificationData;
 
-        handleNotificationRedirection(notificationData);
+        handleNotificationRedirection(notificationData, navigation);
       });
 
     return () => {
@@ -66,7 +69,7 @@ export default function NotificationListnerContainer({
     const notificationData = lastNotificationResponse?.notification.request
       .content.data as NotificationData;
 
-    handleNotificationRedirection(notificationData);
+    handleNotificationRedirection(notificationData, navigation);
   }, [lastNotificationResponse]);
 
   return children;

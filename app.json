@@ -34,7 +34,6 @@
       "ar": "./src/i18n/ar.json"
     },
     "plugins": [
-      "expo-router",
       "expo-localization",
       [
         "expo-notifications",
@@ -46,8 +45,7 @@
       "@mmomtchev/expo-android-localized-app-name"
     ],
     "experiments": {
-      "tsconfigPaths": true,
-      "typedRoutes": true
+      "tsconfigPaths": true
     }
   }
 }

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import * as Facebook from "expo-auth-session/providers/facebook";
 import { ResponseType } from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
-import { router } from "expo-router";
 import FB_ICON from "@/assets/images/fb-icon.png";
 import COLORS from "@/constants/Colors";
 import Button from "@/components/general/Button";
@@ -51,13 +50,12 @@ export default function FacebookRegisterationButton() {
             refreshToken: res?.refresh_token,
           });
           showSuccessMsg({ i18nKey: "LOGIN_SUCCESSFULLY" });
-          router.push("/(tabs)/offer");
         });
     }
   }, [response]);
 
   const SocialLogoMarkup = (
-    <Img source={FB_ICON} style={styles.icon} resizeMode="contain" />
+    <Img source={FB_ICON} style={styles.icon} contentFit="contain" />
   );
 
   return (

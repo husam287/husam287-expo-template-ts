@@ -1,8 +1,9 @@
-import { router } from "expo-router";
+import { NavigationProp } from "@react-navigation/native";
 import { NotificationData, NotificationType } from "@/apis/@types/notification";
 
 export default function handleNotificationRedirection(
-  notificationData: NotificationData
+  notificationData: NotificationData,
+  navigation: NavigationProp<ReactNavigation.RootParamList>
 ) {
   console.log(notificationData, "NOTIFICATION DATA");
 
@@ -11,10 +12,8 @@ export default function handleNotificationRedirection(
     const productId = notificationData?.target_object_id;
 
     if (productId) {
-      router.push({
-        pathname: "/product-details",
-        params: { productId },
-      });
+      // @ts-ignore
+      navigation.navigate("ProductDetailsScreen", { productId });
     }
   }
 }

@@ -1,6 +1,5 @@
 import * as AppleAuthentication from "expo-apple-authentication";
 import { StyleSheet } from "react-native";
-import { router } from "expo-router";
 import COLORS from "@/constants/Colors";
 import { useAppleLoginMutation } from "@/apis/services/auth";
 import Button from "@/components/general/Button";
@@ -56,8 +55,6 @@ export default function AppleRegistarationButton() {
                 refreshToken: res?.refresh_token,
               });
               showSuccessMsg({ i18nKey: "LOGIN_SUCCESSFULLY" });
-
-              router.push("/(tabs)/offer");
             })
             .catch((err) => HandleErrors(err));
         } catch (e) {
