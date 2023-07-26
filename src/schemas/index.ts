@@ -10,12 +10,7 @@ const phoneValidation = YUP.string()
 
 export const loginSchema = yupResolver(
   YUP.object().shape({
-    email: YUP.string()
-      .email()
-      .required(`${i18n.t("EMAIL")} ${i18n.t("REQUIRED")}`),
-    password: YUP.string().required(
-      `${i18n.t("PASSWORD")} ${i18n.t("REQUIRED")}`
-    ),
+    phone: phoneValidation,
   })
 );
 

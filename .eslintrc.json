@@ -66,6 +66,7 @@
       }
     ],
     "@typescript-eslint/ban-ts-comment": 0,
+    "react/no-unused-prop-types": 0,
     "@typescript-eslint/no-shadow": [
       "error"
     ]
