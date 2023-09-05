@@ -2,33 +2,15 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
-  StyleSheet,
   View,
   ViewStyle,
 } from "react-native";
 
 import { getStatusBarHeight } from "react-native-status-bar-height";
-import COLORS from "@/constants/Colors";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import METRICS from "@/constants/Metrics";
-import { ScreenWrapperProps } from "../@types/ScreenWrapperProps";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-    padding: METRICS.generalSpacingValue,
-    paddingTop: 10,
-    width: METRICS.screenWidth,
-  },
-  innerConatiner: {
-    backgroundColor: COLORS.light,
-    flex: 1,
-  },
-  paddingHorizontal0: {
-    paddingHorizontal: 0,
-  },
-});
+import { ScreenWrapperProps } from "./types";
+import styles from "./styles";
 
 export default function ScreenWrapper({
   children,

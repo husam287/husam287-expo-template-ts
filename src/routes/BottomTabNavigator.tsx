@@ -3,15 +3,15 @@ import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
-import NavigationTab from "@/components/general/navigation/Tab";
+import NavigationTab from "@/components/navigation/Tab";
 import METRICS from "@/constants/Metrics";
 import COLORS from "@/constants/Colors";
-import { NavigationTabProps } from "@/components/@types/NavigationTabProps";
 import HomeScreen from "@/screens/main/Home";
 import CategoriesScreen from "@/screens/main/Categories";
 import OfferScreen from "@/screens/main/Offers";
 import CartScreen from "@/screens/main/Cart";
 import MainProfileScreen from "@/screens/profile/MainProfile";
+import { NavigationTabProps } from "@/components/navigation/Tab/types";
 import { TabParamList } from "./types";
 import MainScreenOptions from "./MainScreenOptions";
 

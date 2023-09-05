@@ -9,9 +9,9 @@ import ModalWrapper from "@/components/modals/ModalWrapper";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import styles from "./styles";
 import PureInput from "../PureInput";
-import { DateTimeSelectionProps } from "@/components/@types/DateTimeSelectionProps";
 import useAutoCompleteTranslation from "@/hooks/useAutoCompleteTranslation";
 import i18n from "@/i18n";
+import { DateTimeSelectionProps } from "./types";
 
 const DatePickerThemeOptions = {
   textHeaderColor: COLORS.dark,

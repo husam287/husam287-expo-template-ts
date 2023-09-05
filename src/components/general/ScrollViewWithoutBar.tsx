@@ -1,5 +1,9 @@
-import { ScrollView } from "react-native";
-import { ScrollViewWithoutBarProps } from "../@types/ScrollViewWithoutBarProps";
+import { ScrollView, ScrollViewProps } from "react-native";
+import { ReactNode } from "react";
+
+interface ScrollViewWithoutBarProps extends ScrollViewProps {
+  children: ReactNode;
+}
 
 export default function ScrollViewWithoutBar({
   children,

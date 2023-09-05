@@ -1,6 +1,5 @@
 import {
   ActivityIndicator,
-  StyleSheet,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -9,33 +8,10 @@ import {
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import COLORS from "@/constants/Colors";
 import getShadowStyle from "@/utils/getShadowStyle";
-import { ButtonProps } from "../@types/ButtonProps";
-import Icon from "./Icon";
-import Text from "./Text";
-
-const styles = StyleSheet.create({
-  button: {
-    alignItems: "center",
-    borderRadius: 16,
-    flexDirection: "row",
-    height: 40,
-    justifyContent: "center",
-    paddingHorizontal: 15,
-  },
-  prefixSpacing: {
-    marginEnd: 10,
-  },
-  smallSpaceEnd: { marginEnd: 4 },
-  suffixSpacing: {
-    marginStart: 10,
-  },
-  text: {
-    color: COLORS.light,
-    fontSize: 16,
-    textAlign: "center",
-    ...GLOBAL_STYLES.font700,
-  },
-});
+import { ButtonProps } from "./types";
+import Text from "@/components/general/Text";
+import Icon from "@/components/general/Icon";
+import styles from "./styles";
 
 export default function Button({
   title,

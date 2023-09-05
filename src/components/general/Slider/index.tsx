@@ -1,30 +1,15 @@
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, View } from "react-native";
 import React from "react";
 import Carousel from "react-native-reanimated-carousel";
 import { ExpandingDot } from "react-native-animated-pagination-dots";
 import METRICS from "@/constants/Metrics";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import COLORS from "@/constants/Colors";
-import LoadingComponent from "./LoadingComponent";
-import SliderProps from "../@types/SliderProps";
+import LoadingComponent from "@/components/general/LoadingComponent";
+import SliderProps from "./types";
+import styles from "./styles";
 
 const WIDTH = METRICS.screenWidth;
-
-const styles = StyleSheet.create({
-  dotContainer: {
-    flexDirection: "row-reverse",
-    top: 0,
-  },
-  dotStyle: {
-    borderRadius: 16,
-    height: 8,
-    marginHorizontal: 5,
-    width: 18,
-  },
-  spaceBottom: {
-    paddingBottom: 15,
-  },
-});
 
 export default function Slider({
   data,

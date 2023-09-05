@@ -7,10 +7,10 @@ import Text from "@/components/general/Text";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import LoadingComponent from "@/components/general/LoadingComponent";
 import COLORS from "@/constants/Colors";
-import { NormalSelectionModalProps } from "@/components/@types/NormalSelectionModalProps";
 import i18n from "@/i18n";
 import PureInput from "../PureInput";
 import styles from "./styles";
+import { NormalSelectionModalProps } from "./types";
 
 export default function NormalSelectionModal({
   data,

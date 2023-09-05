@@ -1,7 +1,7 @@
 import ScreenWrapper from "@/components/general/ScreenWrapper";
 import Text from "@/components/general/Text";
-import DebouncedSearchField from "@/components/general/inputs/DebouncedSearchField";
-import DateTimeSelection from "@/components/general/inputs/DateTimeSelection";
+import DebouncedSearchField from "@/components/inputs/DebouncedSearchField";
+import DateTimeSelection from "@/components/inputs/DateTimeSelection";
 import styles from "./styles";
 
 export default function CartScreen() {

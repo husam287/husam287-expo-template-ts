@@ -1,24 +1,10 @@
-import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { useEffect, useRef } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
-import { BottomSheetProps } from "../@types/BottomSheetProps";
-
-const styles = StyleSheet.create({
-  sheetContainer: {
-    justifyContent: "flex-end",
-    padding: 10,
-    paddingHorizontal: 20,
-  },
-  spaceTop: { marginTop: 10 },
-  spacing: {
-    marginStart: -20,
-    marginTop: -20,
-    paddingStart: 20,
-    paddingTop: 20,
-  },
-});
+import { BottomSheetProps } from "./types";
+import styles from "./styles";
 
 export default function BottomSheet({
   isVisible,

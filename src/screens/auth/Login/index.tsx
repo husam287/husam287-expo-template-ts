@@ -8,7 +8,7 @@ import COLORS from "@/constants/Colors";
 import KHAZYN_LOGO from "@/assets/images/icon.png";
 import Img from "@/components/general/Image";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
-import ControllableInput from "@/components/general/inputs/ControllableInput";
+import ControllableInput from "@/components/inputs/ControllableInput";
 import Icon from "@/components/general/Icon";
 import styles from "./styles";
 import { loginSchema } from "@/schemas";

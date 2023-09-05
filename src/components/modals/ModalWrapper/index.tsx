@@ -1,22 +1,14 @@
 import { AntDesign } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import ReactNativeModal from "react-native-modal";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import COLORS from "@/constants/Colors";
 import METRICS from "@/constants/Metrics";
-import { ModalWrapperProps } from "@/components/@types/ModalWrapperProps";
+import styles from "./styles";
+import { ModalWrapperProps } from "./types";
 
-const styles = StyleSheet.create({
-  closeSection: { justifyContent: "flex-end" },
-  modalContainer: {
-    backgroundColor: COLORS.light,
-    borderRadius: 30,
-    padding: 20,
-  },
-});
-
-function ModalWrapper({
+export default function ModalWrapper({
   isVisible,
   setVisible,
   children,
@@ -59,5 +51,3 @@ function ModalWrapper({
     </ReactNativeModal>
   );
 }
-
-export default ModalWrapper;

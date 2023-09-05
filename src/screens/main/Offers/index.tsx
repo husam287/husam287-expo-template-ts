@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import ControllableInput from "@/components/general/inputs/ControllableInput";
+import ControllableInput from "@/components/inputs/ControllableInput";
 import Button from "@/components/general/Button";
-import NormalSelectionModal from "@/components/general/inputs/NormalSelectionModal";
+import NormalSelectionModal from "@/components/inputs/NormalSelectionModal";
 import GENDERS from "@/data/genders";
 import ScreenWrapper from "@/components/general/ScreenWrapper";
 import { testSchema } from "@/schemas";

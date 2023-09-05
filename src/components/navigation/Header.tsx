@@ -4,8 +4,8 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import { useNavigation } from "@react-navigation/native";
 import GLOBAL_STYLES from "@/constants/GlobalStyles";
 import Colors from "@/constants/Colors";
+import Text from "@/components/general/Text";
 import NotificationBell from "./NotificationBell";
-import Text from "../Text";
 
 const styles = StyleSheet.create({
   headerStyle: {
