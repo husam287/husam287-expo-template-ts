@@ -20,7 +20,7 @@ export type TabParamList = {
 };
 
 export type MainStackParamList = {
-  Root: NavigatorScreenParams<TabParamList>; // nested navigator
+  Root: NavigatorScreenParams<TabParamList>;
   ProductDetailsScreen: BaseParams<{ productId?: string }>;
   ProductDetailsModal: BaseParams<{ productId?: string }>;
 };

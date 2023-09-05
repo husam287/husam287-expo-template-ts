@@ -39,3 +39,7 @@ expo-env.d.ts
 # @end expo-cli
 
 *.config.js
+
+# Plop files
+plopfile.js
+templates/

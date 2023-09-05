@@ -3,7 +3,9 @@ import {
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 import BottomTabNavigator from "../BottomTabNavigator";
+// Start of screen
 import ProductDetailsScreen from "@/screens/main/ProductDetails";
+// End of screen
 import { MainStackParamList } from "../types";
 import MainScreenOptions from "../MainScreenOptions";
 

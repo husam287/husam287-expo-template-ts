@@ -39,7 +39,9 @@
     "deploy:test": "eas update --channel testingv1",
     "deploy:live": "eas update --channel prodv1",
     "build:test": "eas build --profile preview",
-    "build:live": "eas build --profile production"
+    "build:live": "eas build --profile production",
+    "g": "plop",
+    "generate": "plop"
   },
   "husky": {
     "hooks": {
@@ -83,6 +85,7 @@
     "i18next": "^23.2.11",
     "lodash-es": "^4.17.21",
     "moment": "^2.29.4",
+    "plop": "^4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
