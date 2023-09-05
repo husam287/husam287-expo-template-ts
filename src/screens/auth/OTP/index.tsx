@@ -21,9 +21,8 @@ import loginHandler from "@/utils/loginHandler";
 import { AuthTokenResponse } from "@/apis/@types/auth";
 import { useLoginMutation } from "@/apis/services/auth";
 
-export default function OtpScreen() {
-  const phone =
-    useRoute<RouteProp<AuthStackParamList, "OtpScreen">>()?.params?.phone;
+export default function Otp() {
+  const phone = useRoute<RouteProp<AuthStackParamList, "Otp">>()?.params?.phone;
 
   const [login, { isLoading: isLoginLoading }] = useLoginMutation();
 

@@ -18,11 +18,11 @@ import {
 
 const SLIDER_HEIGHT = METRICS.screenHeight * 0.37 + 140;
 
-export default function WelcomeScreen() {
+export default function Welcome() {
   const navigation = useNavigation();
 
   const onClickLoginButton = () => {
-    navigation.navigate("LoginScreen");
+    navigation.navigate("Login");
   };
 
   return (

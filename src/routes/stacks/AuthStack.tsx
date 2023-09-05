@@ -2,11 +2,11 @@ import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-import WelcomeScreen from "@/screens/auth/Welcome";
-import LoginScreen from "@/screens/auth/Login";
+import Welcome from "@/screens/auth/Welcome";
+import Login from "@/screens/auth/Login";
 import MainScreenOptions from "../MainScreenOptions";
 import { AuthStackParamList } from "../types";
-import OtpScreen from "@/screens/auth/OTP";
+import Otp from "@/screens/auth/OTP";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -17,8 +17,8 @@ export default function AuthStack() {
     >
       <Stack.Group>
         <Stack.Screen
-          name="WelcomeScreen"
-          component={WelcomeScreen}
+          name="Welcome"
+          component={Welcome}
           initialParams={{
             title: "Welcome page",
             isRightComponentHidden: true,
@@ -26,8 +26,8 @@ export default function AuthStack() {
         />
 
         <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
+          name="Login"
+          component={Login}
           initialParams={{
             title: "Login screen",
             isRightComponentHidden: true,
@@ -35,8 +35,8 @@ export default function AuthStack() {
         />
 
         <Stack.Screen
-          name="OtpScreen"
-          component={OtpScreen}
+          name="Otp"
+          component={Otp}
           initialParams={{
             title: "Login screen",
             isRightComponentHidden: true,

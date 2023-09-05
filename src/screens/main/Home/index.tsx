@@ -32,7 +32,7 @@ export default function HomeScreen() {
       <Text style={styles.title} i18nKey="HOME" />
 
       <Link
-        to={{ screen: "ProductDetailsScreen", params: { productId: "si" } }}
+        to={{ screen: "ProductDetails", params: { productId: "si" } }}
         style={styles.title}
       >
         go to product details

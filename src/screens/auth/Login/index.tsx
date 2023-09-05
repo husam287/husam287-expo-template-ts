@@ -13,7 +13,7 @@ import Icon from "@/components/general/Icon";
 import styles from "./styles";
 import { loginSchema } from "@/schemas";
 
-export default function LoginScreen() {
+export default function Login() {
   const { control, handleSubmit } = useForm({
     resolver: loginSchema,
   });
@@ -21,7 +21,7 @@ export default function LoginScreen() {
   const navigation = useNavigation();
 
   const onLoginHandler = (values: { phone: string }) => {
-    navigation.navigate("OtpScreen", { phone: values.phone });
+    navigation.navigate("Otp", { phone: values.phone });
   };
 
   return (

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ProductDetailsScreen() {
+export default function ProductDetails() {
   return (
     <ScreenWrapper>
       <View>

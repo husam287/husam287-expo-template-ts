@@ -21,14 +21,15 @@ export type TabParamList = {
 
 export type MainStackParamList = {
   Root: NavigatorScreenParams<TabParamList>;
-  ProductDetailsScreen: BaseParams<{ productId?: string }>;
+  Payment: BaseParams;
+  ProductDetails: BaseParams<{ productId?: string }>;
   ProductDetailsModal: BaseParams<{ productId?: string }>;
 };
 
 export type AuthStackParamList = {
-  WelcomeScreen: BaseParams;
-  LoginScreen: BaseParams;
-  OtpScreen: BaseParams<{ phone?: string }>;
+  Welcome: BaseParams;
+  Login: BaseParams;
+  Otp: BaseParams<{ phone?: string }>;
 };
 
 export type MainStackScreenProps<T extends keyof MainStackParamList> =
