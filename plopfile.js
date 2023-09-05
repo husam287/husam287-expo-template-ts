@@ -21,7 +21,7 @@ const screenPlopGeneratorObject = {
     {
       type: 'modify',
       path: 'src/routes/stacks/MainStack.tsx',
-      pattern: '</Stack.Navigator>',
+      pattern: '    </Stack.Navigator>',
       templateFile: "templates/StackAddingScreen.tsx.hbs",
     },
     {

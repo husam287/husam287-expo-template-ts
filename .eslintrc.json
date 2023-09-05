@@ -34,16 +34,6 @@
         ]
       }
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "tabWidth": 2,
-        "semi": true,
-        "singleQuote": false,
-        "endOfLine": "auto"
-      }
-    ],
     "@typescript-eslint/no-use-before-define": [
       "error"
     ],
