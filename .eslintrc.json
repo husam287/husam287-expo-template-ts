@@ -60,6 +60,16 @@
     "react/no-unused-prop-types": 0,
     "@typescript-eslint/no-shadow": [
       "error"
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": false,
+        "endOfLine": "auto"
+      }
     ]
   }
 }
