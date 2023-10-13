@@ -67,6 +67,40 @@ const componentPlopGeneratorObject = {
   ],
 }
 
+const createI18nKey = {
+  description: "Create a traslation in i18n folder",
+  prompts: [
+    {
+      type: "input",
+      name: "key",
+      message: "What is the translation key?",
+    },
+    {
+      type: "input",
+      name: "en",
+      message: "What is the english value?",
+    },
+    {
+      type: "input",
+      name: "ar",
+      message: "What is the arabic value?",
+    },
+  ],
+  actions: [
+    {
+      type: 'modify',
+      path: 'src/i18n/en.json',
+      pattern: `"\n}`,
+      templateFile: "templates/i18n.en.json.hbs",
+    },
+    {
+      type: 'modify',
+      path: 'src/i18n/ar.json',
+      pattern: `"\n}`,
+      templateFile: "templates/i18n.ar.json.hbs",
+    },
+  ],
+}
    
 const toCapitalize = (string) => {
   if(!string) return "";
@@ -75,10 +109,12 @@ const toCapitalize = (string) => {
 
 module.exports = function (plop) {
     plop.setGenerator("component", componentPlopGeneratorObject);
-    plop.setGenerator("c", componentPlopGeneratorObject);
+    plop.setGenerator("c", componentPlopGeneratorObject);    
 
     plop.setGenerator("screen", screenPlopGeneratorObject);
     plop.setGenerator("s", screenPlopGeneratorObject);
+
+    plop.setGenerator("i18n", createI18nKey)
 
     plop.setHelper('extractName', (fullName) => {
       const parts = fullName.split('/')
